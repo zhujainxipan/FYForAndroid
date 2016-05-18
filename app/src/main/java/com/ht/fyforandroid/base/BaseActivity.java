@@ -1,11 +1,46 @@
 package com.ht.fyforandroid.base;
 
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by niehongtao on 16/5/16.
  */
-public class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity {
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        if (getLayoutId() != 0) {
+            setContentView(getLayoutId());
+        }
+        // 使用注解绑定控件
+        ButterKnife.inject(this);
+        init(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.reset(this);
+    }
+
+    /**
+     * 子类重写改方法，设置activity的布局
+     * @return
+     */
+    protected abstract int getLayoutId();
+
+    protected abstract void init(Bundle savedInstanceState);
+
+    protected abstract void initView();
+
+    protected abstract void initData();
 }
