@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.ht.fyforandroid.AppManager;
+
 import butterknife.ButterKnife;
 
 /**
@@ -24,11 +26,13 @@ public abstract class BaseActivity extends FragmentActivity {
         init(savedInstanceState);
         initView();
         initData();
+        AppManager.getAppManager().addActivity(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AppManager.getAppManager().removeActivity(this);
         ButterKnife.reset(this);
     }
 
