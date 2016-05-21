@@ -66,6 +66,8 @@ public class AppManager {
             }
             mActivities.clear();
         }
+        // 杀死该应用进程
+        android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
     }
 
