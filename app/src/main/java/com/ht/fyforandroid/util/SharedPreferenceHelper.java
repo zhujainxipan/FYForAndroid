@@ -14,7 +14,7 @@ import com.ht.fyforandroid.BaseApplication;
  */
 public class SharedPreferenceHelper {
     SharedPreferences mSharedPreferences;
-    String name = "FYForAndroid";
+    String name = "config";
     private static SharedPreferenceHelper helper;
 
     public static SharedPreferenceHelper getInstance() {
@@ -29,6 +29,11 @@ public class SharedPreferenceHelper {
                 BaseApplication.getContext().getSharedPreferences(name, Context.MODE_PRIVATE);
     }
 
+
+    public void removeValue(String key) {
+        SharedPreferences.Editor edit = mSharedPreferences.edit();
+        edit.remove(key);
+    }
 
     public void putStringValue(String key, String value) {
         SharedPreferences.Editor edit = mSharedPreferences.edit();
@@ -49,7 +54,7 @@ public class SharedPreferenceHelper {
     }
 
     public String getStringValue(String key){
-        return mSharedPreferences.getString(key, null);
+        return mSharedPreferences.getString(key, "");
     }
 
     public int getIntValue(String key){
