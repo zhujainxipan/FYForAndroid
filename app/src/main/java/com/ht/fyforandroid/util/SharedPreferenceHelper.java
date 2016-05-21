@@ -10,7 +10,7 @@ import com.ht.fyforandroid.BaseApplication;
  * sharedpreference的应用场景：
  * 1. 登陆：记住密码功能
  * 2. 电商客户端：记住账号
- * 3. 常用的：配置的信息等
+ * 3. 常用的：设置信息：例如是否加载大图、是否开启推送通知、是否开启双击返回等
  */
 public class SharedPreferenceHelper {
     SharedPreferences mSharedPreferences;
