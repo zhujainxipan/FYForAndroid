@@ -53,7 +53,7 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract int getLayoutId();
 
-    protected abstract int initView(View view);
+    protected abstract void initView(View view);
 
     protected abstract void initData();
 
