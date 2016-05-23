@@ -5,19 +5,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-    <!-- 导航标题栏 -->
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/pager_tabstrip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_bright"
-        app:allowWidthFull="true">
-    </com.astuetz.PagerSlidingTabStrip>
+    <!--&lt;!&ndash; 导航标题栏 &ndash;&gt;-->
+    <!--<com.astuetz.PagerSlidingTabStrip-->
+        <!--android:id="@+id/pager_tabstrip"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/holo_blue_bright"-->
+        <!--app:allowWidthFull="true">-->
+    <!--</com.astuetz.PagerSlidingTabStrip>-->
 
     <View
         android:id="@+id/view_pager_line"
         android:layout_width="match_parent"
-        android:layout_below="@id/pager_tabstrip"
         android:layout_height="1px"/>
 
     <android.support.v4.view.ViewPager
