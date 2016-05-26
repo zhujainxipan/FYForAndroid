@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    >
 
     <RelativeLayout
         android:id="@+id/rl_img"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         >
 
         <ImageView
@@ -16,33 +17,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/pagefailed_bg"
+            android:visibility="gone"
             />
 
         <ProgressBar
             android:id="@+id/animProgress"
-            android:layout_width="30dip"
-            android:layout_height="30dip"
-            style="@style/loading" />
+            style="@style/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
 
 
     </RelativeLayout>
 
 
-
     <TextView
         android:id="@+id/tv_error_layout"
-        android:layout_below="@id/rl_img"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/rl_img"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:lines="2"
         android:gravity="center"
+        android:lines="2"
         android:text="@string/error_view_loading"
         android:textColor="@android:color/darker_gray"
-        android:textSize="26dp" />
-
-
+        android:textSize="26dp"
+        />
 
 
 </RelativeLayout>

@@ -20,7 +20,6 @@ public class EmptyLayout extends LinearLayout {
     public static final int NETWORK_LOADING = 2;
     public static final int NODATA = 3;
     public static final int NODATA_ENABLE_CLICK = 5;
-    public static final int NO_LOGIN = 6;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private TextView mTextview;
@@ -84,6 +83,7 @@ public class EmptyLayout extends LinearLayout {
     public void setErrorType(int i) {
         setVisibility(View.VISIBLE);
         switch (i) {
+            // 没有网络
             case NETWORK_ERROR:
                 if (TDevice.hasInternet()) {
                     mTextview.setText(R.string.error_view_load_error_click_to_refresh);
@@ -96,6 +96,7 @@ public class EmptyLayout extends LinearLayout {
                 mProgressBar.setVisibility(View.GONE);
                 clickEnable = true;
                 break;
+            // 没有网络，加载中
             case NETWORK_LOADING:
                 mProgressBar.setVisibility(View.VISIBLE);
                 mImageView.setVisibility(View.GONE);
