@@ -4,6 +4,7 @@ package com.ht.fyforandroid.base;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.ht.fyforandroid.R;
@@ -51,6 +52,7 @@ public abstract class BaseActivity extends FragmentActivity {
         AppManager.getAppManager().removeActivity(this);
         ButterKnife.reset(this);
     }
+
 
     /**
      * 子类重写改方法，设置activity的布局

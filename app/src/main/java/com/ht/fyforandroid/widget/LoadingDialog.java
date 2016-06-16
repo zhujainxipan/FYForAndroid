@@ -1,7 +1,9 @@
 package com.ht.fyforandroid.widget;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,6 +40,13 @@ public class LoadingDialog extends Dialog {
         mImageView = (ImageView) findViewById(R.id.img_error_layout);
         mProgressBar = (ProgressBar) findViewById(R.id.animProgress);
         mTextview = (TextView) findViewById(R.id.tv_error_layout);
+        this.setOnKeyListener(new OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                hideLoading();
+                return false;
+            }
+        });
     }
 
     /**
@@ -49,7 +58,9 @@ public class LoadingDialog extends Dialog {
             return;
         }
         setCancelable(false);
-        setAllVisibility(View.VISIBLE);
+//        if (! isShowing()) {
+//           show();
+//        }
         switch (i) {
             // 没有网络
             case NETWORK_ERROR:
