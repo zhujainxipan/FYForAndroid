@@ -1,10 +1,12 @@
 package com.ht.fyforandroid.base;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.AppManager;
 import com.ht.fyforandroid.widget.LoadingDialog;
 
@@ -49,6 +51,24 @@ public abstract class BaseActivity extends FragmentActivity {
         ButterKnife.reset(this);
     }
 
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+    }
 
     /**
      * 子类重写改方法，设置activity的布局

@@ -1,19 +1,20 @@
 package com.ht.fyforandroid;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.util.DoubleClickExitHelper;
-import com.ht.fyforandroid.widget.EmptyLayout;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+/**
+ * Created by niehongtao on 16/6/16.
+ */
 public class MainActivity extends BaseActivity {
-    @InjectView(R.id.tv)
-    TextView mTv;
-    private DoubleClickExitHelper mDoubleClickExit;
+    @InjectView(R.id.btn_close)
+    Button mBtnClose;
 
     @Override
     protected int getLayoutId() {
@@ -22,34 +23,23 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        mDoubleClickExit = new DoubleClickExitHelper(this);
+        super.mLoadingDialog.hideLoading();
     }
 
     @Override
     protected void initView() {
-        mTv.postDelayed(new Runnable() {
+        mBtnClose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                MainActivity.super.mLoadingDialog.showLoading(EmptyLayout.NETWORK_ERROR);
+            public void onClick(View v) {
+                finish();
             }
-        }, 5000);
+        });
+
     }
 
     @Override
     protected void initData() {
 
-    }
-
-    /**
-     * 监听返回--是否退出程序
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            // 是否退出应用
-            return mDoubleClickExit.onKeyDown(keyCode, event);
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
 }
