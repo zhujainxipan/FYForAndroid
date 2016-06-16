@@ -4,7 +4,9 @@ package com.ht.fyforandroid.base;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
+import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.AppManager;
 
 import butterknife.ButterKnife;
@@ -14,19 +16,27 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (getLayoutId() != 0) {
-            setContentView(getLayoutId());
+            View contentView = getLayoutInflater().inflate(getLayoutId(), null);
+            setContentView(contentView);
         }
+
         // 使用注解绑定控件
         ButterKnife.inject(this);
         init(savedInstanceState);
         initView();
         initData();
         AppManager.getAppManager().addActivity(this);
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

@@ -40,10 +40,10 @@ public class EmptyLayout extends LinearLayout {
     }
 
     private void init() {
-        View view = View.inflate(mContext, R.layout.view_empty_layout, null);
-        mImageView = (ImageView) view.findViewById(R.id.img_error_layout);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.animProgress);
-        mTextview = (TextView) view.findViewById(R.id.tv_error_layout);
+        View.inflate(mContext, R.layout.view_empty_layout, this);
+        mImageView = (ImageView) findViewById(R.id.img_error_layout);
+        mProgressBar = (ProgressBar) findViewById(R.id.animProgress);
+        mTextview = (TextView) findViewById(R.id.tv_error_layout);
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

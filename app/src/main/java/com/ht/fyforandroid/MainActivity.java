@@ -2,10 +2,17 @@ package com.ht.fyforandroid;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
+import com.ht.fyforandroid.widget.EmptyLayout;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class MainActivity extends BaseActivity {
+    @InjectView(R.id.empty_layout)
+    EmptyLayout mEmptyLayout;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -20,7 +27,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        mEmptyLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mEmptyLayout.setErrorType(EmptyLayout.NETWORK_ERROR);
+            }
+        }, 5000);
     }
 
     @Override

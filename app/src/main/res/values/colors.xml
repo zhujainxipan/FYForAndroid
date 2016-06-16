@@ -12,4 +12,16 @@
     <color name="mask_color">#88888888</color>
     <color name="check_bg">#f2f2f2</color>
     <color name="un_press_color">#9C27B0</color>
+
+    <item name="gray_drawable" type="drawable">#FF323A45</item>
+
+    <drawable name="white">#ffffffff</drawable>
+
+    <color name="black">#ff000000</color>
+
+    <drawable name="system_divide">#ffdddddd</drawable>
+    <color name="stand_bg">#fff6f6f6</color>
+
+
+
 </resources>

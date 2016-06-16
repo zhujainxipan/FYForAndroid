@@ -1,6 +1,6 @@
 package com.ht.fyforandroid.util;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
@@ -12,13 +12,13 @@ import android.widget.Toast;
  */
 public class DoubleClickExitHelper {
 
-    private final Activity mActivity;
+    private final FragmentActivity mActivity;
 
     private boolean isOnKeyBacking;
     private Handler mHandler;
     private Toast mBackToast;
 
-    public DoubleClickExitHelper(Activity activity) {
+    public DoubleClickExitHelper(FragmentActivity activity) {
         mActivity = activity;
         mHandler = new Handler(Looper.getMainLooper());
     }
