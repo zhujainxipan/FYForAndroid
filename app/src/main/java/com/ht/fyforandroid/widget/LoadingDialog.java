@@ -47,20 +47,17 @@ public class LoadingDialog extends Dialog {
                 return false;
             }
         });
+        setCancelable(false);
     }
 
     /**
      * 供外界调用，来设置空页面的布局状态
      * @param i
      */
-    public void setErrorType(int i) {
+    public void showLoading(int i) {
         if (null == mActivity || mActivity.isFinishing()) {
             return;
         }
-        setCancelable(false);
-//        if (! isShowing()) {
-//           show();
-//        }
         switch (i) {
             // 没有网络
             case NETWORK_ERROR:

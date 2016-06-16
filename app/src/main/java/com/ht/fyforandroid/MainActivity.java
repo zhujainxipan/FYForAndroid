@@ -8,7 +8,6 @@ import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.ht.fyforandroid.widget.EmptyLayout;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class MainActivity extends BaseActivity {
@@ -31,7 +30,7 @@ public class MainActivity extends BaseActivity {
         mTv.postDelayed(new Runnable() {
             @Override
             public void run() {
-                MainActivity.super.mLoadingDialog.setErrorType(EmptyLayout.NETWORK_ERROR);
+                MainActivity.super.mLoadingDialog.showLoading(EmptyLayout.NETWORK_ERROR);
             }
         }, 5000);
     }

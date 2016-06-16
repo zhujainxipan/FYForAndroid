@@ -2,14 +2,10 @@ package com.ht.fyforandroid.base;
 
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
 import android.view.View;
 
-import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.AppManager;
-import com.ht.fyforandroid.widget.EmptyLayout;
 import com.ht.fyforandroid.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
@@ -29,7 +25,7 @@ public abstract class BaseActivity extends FragmentActivity {
             setContentView(contentView);
         }
         mLoadingDialog = new LoadingDialog(this);
-        mLoadingDialog.setErrorType(LoadingDialog.NETWORK_LOADING);
+        mLoadingDialog.showLoading(LoadingDialog.NETWORK_LOADING);
 
         // 使用注解绑定控件
         ButterKnife.inject(this);
