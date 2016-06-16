@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.AppManager;
+import com.ht.fyforandroid.widget.EmptyLayout;
+import com.ht.fyforandroid.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
 
@@ -16,6 +18,8 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
+    public LoadingDialog mLoadingDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,8 @@ public abstract class BaseActivity extends FragmentActivity {
             View contentView = getLayoutInflater().inflate(getLayoutId(), null);
             setContentView(contentView);
         }
+        mLoadingDialog = new LoadingDialog(this);
+        mLoadingDialog.setErrorType(LoadingDialog.NETWORK_LOADING);
 
         // 使用注解绑定控件
         ButterKnife.inject(this);

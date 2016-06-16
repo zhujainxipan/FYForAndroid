@@ -6,18 +6,11 @@
     >
 
     <TextView
+        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:text="niidddddddddddddddddddddddd"
         />
-
-    <com.ht.fyforandroid.widget.EmptyLayout
-        android:id="@+id/empty_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        />
-
 </FrameLayout>

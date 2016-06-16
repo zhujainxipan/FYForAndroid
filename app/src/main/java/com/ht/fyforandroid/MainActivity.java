@@ -2,6 +2,7 @@ package com.ht.fyforandroid;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
@@ -11,8 +12,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class MainActivity extends BaseActivity {
-    @InjectView(R.id.empty_layout)
-    EmptyLayout mEmptyLayout;
+    @InjectView(R.id.tv)
+    TextView mTv;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -27,10 +28,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mEmptyLayout.postDelayed(new Runnable() {
+        mTv.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mEmptyLayout.setErrorType(EmptyLayout.NETWORK_ERROR);
+                MainActivity.super.mLoadingDialog.setErrorType(EmptyLayout.NETWORK_ERROR);
             }
         }, 5000);
     }
@@ -51,6 +52,5 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 }
