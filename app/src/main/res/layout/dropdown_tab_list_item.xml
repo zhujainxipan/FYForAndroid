@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<net.coding.program.project.detail.DropdownListItemView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ht.fyforandroid.widget.filter.DropdownListItemView xmlns:android="http://schemas.android.com/apk/res/android"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="48dp"
                                                         android:background="@drawable/list_item_selector"

@@ -58,4 +58,33 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000" />
+
+        <com.ht.fyforandroid.widget.filter.DropdownListView
+            android:id="@+id/dropdownType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <com.ht.fyforandroid.widget.filter.DropdownListView
+            android:id="@+id/dropdownLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <com.ht.fyforandroid.widget.filter.DropdownListView
+            android:id="@+id/dropdownOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </FrameLayout>
+
 </LinearLayout>

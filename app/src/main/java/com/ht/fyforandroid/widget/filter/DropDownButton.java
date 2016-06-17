@@ -30,10 +30,9 @@ public class DropDownButton extends RelativeLayout {
     }
 
     private void init() {
-        View view = View.inflate(mContext, R.layout.dropdown_tab_button, this);
-        addView(view);
-        mTextView = (TextView) view.findViewById(R.id.textView);
-        bottomLine = view.findViewById(R.id.bottomLine);
+        View.inflate(mContext, R.layout.dropdown_tab_button, this);
+        mTextView = (TextView) findViewById(R.id.textView);
+        bottomLine = findViewById(R.id.bottomLine);
     }
 
     public void setText(String text) {

@@ -19,9 +19,9 @@ import java.util.List;
 public class DropdownListView extends ScrollView {
     private Context mContext;
     private LinearLayout mLl;
-    DropdownItemObject current;
+    public DropdownItemObject current;
     List<? extends DropdownItemObject> list;
-    DropDownButton button;
+    public DropDownButton button;
 
     public DropdownListView(Context context) {
         super(context);
@@ -36,8 +36,8 @@ public class DropdownListView extends ScrollView {
     }
 
     private void init() {
-        View view = View.inflate(mContext, R.layout.dropdown_tab_list, null);
-        mLl = (LinearLayout) view.findViewById(R.id.linearLayout);
+        View.inflate(mContext, R.layout.dropdown_tab_list, this);
+        mLl = (LinearLayout) findViewById(R.id.linearLayout);
     }
 
     public void flush() {
