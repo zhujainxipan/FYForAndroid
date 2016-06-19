@@ -1,7 +1,6 @@
 package com.ht.fyforandroid;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,9 +11,6 @@ import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.widget.filter.DropDownButton;
 import com.ht.fyforandroid.widget.filter.DropdownItemObject;
 import com.ht.fyforandroid.widget.filter.DropdownListView;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -219,54 +215,5 @@ public class MainActivity extends BaseActivity {
                 mDropdownLabel.bind(datasetLabel, mChooseLabel, this, mDropdownLabel.current.id);
             }
         }
-
-//        void flushAll(boolean reloadImmedate) {
-//            getNetwork(String.format(URI_TYPE_COUNTS, mProjectObject.owner_user_name, mProjectObject.name), URI_TYPE_COUNTS);
-//            if (reloadImmedate) {
-//                getNetwork(String.format(URI_ALL_LABELS, mProjectObject.owner_user_name, mProjectObject.name), URI_ALL_LABELS);
-//                getNetwork(String.format(URI_MY_LABELS, mProjectObject.owner_user_name, mProjectObject.name), URI_MY_LABELS);
-//                onRefresh();
-//            } else {
-//                List<DropdownItemObject> currentList = getCurrentLabels();
-//                getNetwork(String.format(URI_ALL_LABELS, mProjectObject.owner_user_name, mProjectObject.name), currentList == datasetAllLabel ? URI_ALL_LABELS_THEN_RELOAD : URI_ALL_LABELS);
-//                getNetwork(String.format(URI_MY_LABELS, mProjectObject.owner_user_name, mProjectObject.name), currentList == datasetMyLabel ? URI_MY_LABELS_THEN_RELOAD : URI_MY_LABELS);
-//            }
-//        }
-
-//        public void flushCounts(JSONObject json) {
-//            if (json == null) return;
-//            datasetType.get(ID_TYPE_ALL).setSuffix(" (" + json.optInt("all", 0) + ")");
-//            datasetType.get(ID_TYPE_MY).setSuffix(" (" + json.optInt("my", 0) + ")");
-//            dropdownType.flush();
-//            dropdownLabel.flush();
-//        }
-
-//        void flushAllLabels(JSONArray array) {
-//            flushLabels(array, datasetAllLabel);
-//        }
-//
-//        void flushMyLabels(JSONArray array) {
-//            flushLabels(array, datasetMyLabel);
-//        }
-
-//        private void flushLabels(JSONArray array, List<DropdownItemObject> targetList) {
-//            if (array == null) return;
-//            while (targetList.size() > 1) targetList.remove(targetList.size() - 1);
-//            for (int i = 0, n = array.length(); i < n; i++) {
-//                final JSONObject data = array.optJSONObject(i);
-//                int id = data.optInt("id");
-//                String name = data.optString("name");
-//                if (TextUtils.isEmpty(name)) continue;
-//                int topicsCount = data.optInt("count", 0);
-//                // 只有all才做0数量过滤，因为my的返回数据总是0
-//                if (topicsCount == 0 && targetList == datasetAllLabel) continue;
-//                DropdownItemObject item = new DropdownItemObject(name, id, String.valueOf(id));
-//                if (targetList == datasetAllLabel)
-//                    item.setSuffix(String.format(" (%d)", data.optInt("count", 0)));
-//                targetList.add(item);
-//            }
-//            updateLabels(targetList);
-//        }
     }
-
 }

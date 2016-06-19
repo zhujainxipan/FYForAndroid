@@ -38,7 +38,7 @@ public class FileUtil {
 
 
     /**
-     * 读取文本文件
+     * 读取文本文件，android系统特定位置的文件名为fileName的文件信息
      * @param context
      * @param fileName
      * @return
@@ -52,6 +52,19 @@ public class FileUtil {
         }
         return "";
     }
+
+    //从某个路径下读取文件内容
+    public static String readFromFile(String path) {
+        try {
+            File f = new File(path);
+            FileInputStream in = new FileInputStream(f);
+            return readInStream(in);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
 
     /**
