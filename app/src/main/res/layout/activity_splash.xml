@@ -21,4 +21,23 @@
         android:layout_height="wrap_content"
         android:text="进入主页"
         />
+
+
+    <Button
+        android:id="@+id/btn_test_httpclient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试httpclient"
+        />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#000"
+        android:text="niidddddddddddddddddddddddd"
+        />
+
+
 </LinearLayout>

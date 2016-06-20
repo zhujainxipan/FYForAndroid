@@ -8,7 +8,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.net.httpclient.HttpClientUtil;
+import com.ht.fyforandroid.net.httpclient.ICallBack;
+import com.ht.fyforandroid.net.httpclient.Request;
+import com.ht.fyforandroid.net.httpclient.StringCallBack;
+import com.ht.fyforandroid.net.httpclient.UrlHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
+
+import org.apache.http.HttpResponse;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,6 +25,10 @@ public class SplashActivity extends BaseActivity {
     TextView mTv;
     @InjectView(R.id.btn_enter)
     Button mBtnEnter;
+    @InjectView(R.id.btn_test_httpclient)
+    Button mBtnTestHttpclient;
+    @InjectView(R.id.tv_result)
+    TextView mTvResult;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -46,6 +57,29 @@ public class SplashActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
+        mBtnTestHttpclient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestString();
+            }
+        });
+    }
+
+    private void requestString() {
+        final Request request = new Request(UrlHelper.TEST_STRING, Request.RequestMethod.GET);
+        request.setCallback(new StringCallBack() {
+            @Override
+            public void onFailure(Exception result) {
+                result.printStackTrace();
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                mTvResult.setText((String) result);
+            }
+        });
+        request.execute();
     }
 
     @Override

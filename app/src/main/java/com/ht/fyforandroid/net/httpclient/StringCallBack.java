@@ -8,7 +8,7 @@ import org.apache.commons.io.IOUtils;
 /**
  * Created by niehongtao on 16/6/18.
  */
-public abstract class StringCallBack extends AbstractCallback{
+public class StringCallBack extends AbstractCallback{
 
     @Override
     protected Object bindData(String content) {
@@ -16,5 +16,15 @@ public abstract class StringCallBack extends AbstractCallback{
             return FileUtil.readFromFile(path);
         }
         return content;
+    }
+
+    @Override
+    public void onFailure(Exception result) {
+
+    }
+
+    @Override
+    public void onSuccess(Object result) {
+
     }
 }

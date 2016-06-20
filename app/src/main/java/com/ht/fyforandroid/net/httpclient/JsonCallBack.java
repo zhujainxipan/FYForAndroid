@@ -3,9 +3,9 @@ package com.ht.fyforandroid.net.httpclient;
 /**
  * Created by niehongtao on 16/6/18.
  */
-public class JsonCallBack implements ICallBack {
+public class JsonCallBack extends AbstractCallback {
     @Override
-    public void onFaulure(Exception result) {
+    public void onFailure(Exception result) {
 
     }
 

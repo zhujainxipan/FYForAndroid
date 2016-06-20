@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by niehongtao on 16/6/18.
  */
-public abstract class RequestTask extends AsyncTask<Object, Integer, Object> {
+public class RequestTask extends AsyncTask<Object, Integer, Object> {
     private Request mRequest;
 
     public RequestTask(Request request) {
@@ -36,7 +36,7 @@ public abstract class RequestTask extends AsyncTask<Object, Integer, Object> {
     protected void onPostExecute(Object result) {
         super.onPostExecute(result);
         if (result instanceof Exception) {
-            mRequest.mCallback.onFaulure((Exception) result);
+            mRequest.mCallback.onFailure((Exception) result);
         } else {
             mRequest.mCallback.onSuccess(result);
         }

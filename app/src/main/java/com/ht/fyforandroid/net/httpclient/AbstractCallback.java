@@ -18,10 +18,12 @@ import java.util.zip.InflaterInputStream;
 /**
  * Created by niehongtao on 16/6/18.
  */
-public class AbstractCallback implements ICallBack{
+public abstract class AbstractCallback implements ICallBack{
     public String path;
     private static final int IO_BUFFER_SIZE = 4 * 1024;
 
+    // 做解析
+    @Override
     public Object handle(HttpResponse response) {
         // file,json,xml,image,string
         try {
@@ -63,8 +65,6 @@ public class AbstractCallback implements ICallBack{
             }
         } catch (ParseException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,16 +74,5 @@ public class AbstractCallback implements ICallBack{
 
     protected Object bindData(String content) {
         return content;
-    }
-
-
-    @Override
-    public void onFaulure(Exception result) {
-
-    }
-
-    @Override
-    public void onSuccess(Object result) {
-
     }
 }

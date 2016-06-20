@@ -25,6 +25,11 @@ public class Request {
     public static final String ENCODING = "UTF-8";
     public ICallBack mCallback;
 
+    public Request(String url, RequestMethod method) {
+        this.url = url;
+        this.method = method;
+    }
+
     // 表单形式
     public void setEntity(ArrayList<NameValuePair> forms) {
         try {
@@ -51,5 +56,10 @@ public class Request {
 
     public void setCallback(ICallBack callback) {
         mCallback = callback;
+    }
+
+    public void execute() {
+        RequestTask task = new RequestTask(this);
+        task.execute();
     }
 }

@@ -529,23 +529,23 @@ public class TDevice {
         return sbar;
     }
 
-    public static int getActionBarHeight(Context context) {
-        int actionBarHeight = 0;
-        TypedValue tv = new TypedValue();
-        if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize,
-                tv, true))
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,
-                    context.getResources().getDisplayMetrics());
-
-        if (actionBarHeight == 0
-                && context.getTheme().resolveAttribute(R.attr.actionBarSize,
-                tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,
-                    context.getResources().getDisplayMetrics());
-        }
-
-        return actionBarHeight;
-    }
+//    public static int getActionBarHeight(Context context) {
+//        int actionBarHeight = 0;
+//        TypedValue tv = new TypedValue();
+//        if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize,
+//                tv, true))
+//            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,
+//                    context.getResources().getDisplayMetrics());
+//
+//        if (actionBarHeight == 0
+//                && context.getTheme().resolveAttribute(R.attr.actionBarSize,
+//                tv, true)) {
+//            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,
+//                    context.getResources().getDisplayMetrics());
+//        }
+//
+//        return actionBarHeight;
+//    }
 
     public static boolean hasStatusBar(Activity activity) {
         WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
