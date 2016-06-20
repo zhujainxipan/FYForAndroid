@@ -2,6 +2,7 @@ package com.ht.fyforandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import com.ht.fyforandroid.net.httpclient.UrlHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 
 import org.apache.http.HttpResponse;
+
+import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -67,6 +70,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void requestString() {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "ht_training_http.txt";
         final Request request = new Request(UrlHelper.TEST_STRING, Request.RequestMethod.GET);
         request.setCallback(new StringCallBack() {
             @Override
@@ -78,7 +82,7 @@ public class SplashActivity extends BaseActivity {
             public void onSuccess(Object result) {
                 mTvResult.setText((String) result);
             }
-        });
+        }.setPath(path));
         request.execute();
     }
 

@@ -75,4 +75,9 @@ public abstract class AbstractCallback implements ICallBack{
     protected Object bindData(String content) {
         return content;
     }
+
+    public AbstractCallback setPath(String path) {
+        this.path = path;
+        return this;
+    }
 }
