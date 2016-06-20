@@ -9,14 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.net.httpclient.HttpClientUtil;
-import com.ht.fyforandroid.net.httpclient.ICallBack;
+import com.ht.fyforandroid.net.httpclient.JsonCallBack;
 import com.ht.fyforandroid.net.httpclient.Request;
 import com.ht.fyforandroid.net.httpclient.StringCallBack;
 import com.ht.fyforandroid.net.httpclient.UrlHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
-
-import org.apache.http.HttpResponse;
 
 import java.io.File;
 
@@ -32,6 +29,8 @@ public class SplashActivity extends BaseActivity {
     Button mBtnTestHttpclient;
     @InjectView(R.id.tv_result)
     TextView mTvResult;
+    @InjectView(R.id.btn_test_json)
+    Button mBtnTestJson;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -67,6 +66,29 @@ public class SplashActivity extends BaseActivity {
                 requestString();
             }
         });
+
+        mBtnTestJson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestJson();
+            }
+        });
+    }
+
+    private void requestJson() {
+        final Request request = new Request(UrlHelper.TEST_JSON, Request.RequestMethod.GET);
+        request.setCallback(new JsonCallBack() {
+            @Override
+            public void onFailure(Exception result) {
+                result.printStackTrace();
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                mTvResult.setText((String) result);
+            }
+        });
+        request.execute();
     }
 
     private void requestString() {
@@ -102,5 +124,4 @@ public class SplashActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }

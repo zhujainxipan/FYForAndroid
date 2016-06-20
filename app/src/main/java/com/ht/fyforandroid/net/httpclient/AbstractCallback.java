@@ -21,6 +21,7 @@ import java.util.zip.InflaterInputStream;
 public abstract class AbstractCallback implements ICallBack{
     public String path;
     private static final int IO_BUFFER_SIZE = 4 * 1024;
+    public Class mReturnClass;
 
     // 做解析
     @Override
@@ -80,4 +81,11 @@ public abstract class AbstractCallback implements ICallBack{
         this.path = path;
         return this;
     }
+
+    public AbstractCallback setReturnClass(Class clz) {
+        this.mReturnClass = clz;
+        return this;
+    }
+
+
 }
