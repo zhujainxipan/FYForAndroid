@@ -45,6 +45,16 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#000"
+        android:background="#ccc"
+        android:text="进度显示区"
+        />
+
+    <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

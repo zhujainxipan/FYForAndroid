@@ -28,7 +28,7 @@ public class RequestTask extends AsyncTask<Object, Integer, Object> {
             return mRequest.mCallback.handle(response, new IProgressListener() {
                 @Override
                 public void onProgressUpdate(int curPos, int contentLength) {
-                    publishProgress();
+                    publishProgress(curPos, contentLength);
                 }
             });
         } catch (IOException e) {
@@ -41,6 +41,7 @@ public class RequestTask extends AsyncTask<Object, Integer, Object> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
+        mRequest.mCallback.onProgressUpdate(values[0], values[1]);
     }
 
     @Override

@@ -12,4 +12,7 @@ public interface ICallBack {
 
     Object handle(HttpResponse response, IProgressListener iProgressListener);
 
+    void onProgressUpdate(int curPos, int contentLength);
+
+
 }

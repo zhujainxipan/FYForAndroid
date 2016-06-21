@@ -15,6 +15,8 @@ import com.ht.fyforandroid.net.httpclient.StringCallBack;
 import com.ht.fyforandroid.net.httpclient.UrlHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 
 import butterknife.ButterKnife;
@@ -31,6 +33,8 @@ public class SplashActivity extends BaseActivity {
     TextView mTvResult;
     @InjectView(R.id.btn_test_json)
     Button mBtnTestJson;
+    @InjectView(R.id.tv_progress)
+    TextView mTvProgress;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -78,16 +82,24 @@ public class SplashActivity extends BaseActivity {
     private void requestJson() {
         final Request request = new Request(UrlHelper.TEST_JSON, Request.RequestMethod.GET);
         request.setCallback(new JsonCallBack() {
-            @Override
-            public void onFailure(Exception result) {
-                result.printStackTrace();
-            }
+                                @Override
+                                public void onFailure(Exception result) {
+                                    result.printStackTrace();
+                                }
 
-            @Override
-            public void onSuccess(Object result) {
-                mTvResult.setText((String) result);
-            }
-        });
+                                @Override
+                                public void onSuccess(Object result) {
+                                    mTvResult.setText((String) result);
+                                }
+
+                                @Override
+                                public void onProgressUpdate(int curPos, int contentLength) {
+
+                                }
+                            }
+
+
+        );
         request.execute();
     }
 
@@ -103,6 +115,11 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onSuccess(Object result) {
                 mTvResult.setText((String) result);
+            }
+
+            @Override
+            public void onProgressUpdate(int curPos, int contentLength) {
+                mTvProgress.setText(curPos/contentLength + "");
             }
         }.setPath(path));
         request.execute();
