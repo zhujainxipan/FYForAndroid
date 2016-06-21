@@ -21,11 +21,10 @@ import java.util.zip.InflaterInputStream;
 public abstract class AbstractCallback implements ICallBack{
     public String path;
     private static final int IO_BUFFER_SIZE = 4 * 1024;
-    public Class mReturnClass;
 
     // 做解析
     @Override
-    public Object handle(HttpResponse response) {
+    public Object handle(HttpResponse response, IProgressListener iProgressListener) {
         // file,json,xml,image,string
         try {
 
@@ -49,8 +48,12 @@ public abstract class AbstractCallback implements ICallBack{
                         }
                         byte[] b = new byte[IO_BUFFER_SIZE];
                         int read;
+                        long curPos = 0;
+                        long length = entity.getContentLength();
                         while ((read = in.read(b)) != -1) {
-                            //todo update progress
+                            // update progress
+                            curPos += read;
+                            iProgressListener.onProgressUpdate((int)(curPos/1024), (int)(length/1024));
                             fos.write(b, 0, read);
                         }
 
@@ -82,10 +85,6 @@ public abstract class AbstractCallback implements ICallBack{
         return this;
     }
 
-    public AbstractCallback setReturnClass(Class clz) {
-        this.mReturnClass = clz;
-        return this;
-    }
 
 
 }
