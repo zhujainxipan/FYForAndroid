@@ -21,4 +21,6 @@ public interface ICallBack {
      * @return
      */
     Object onPreHandle(Object object);
+
+    Object onPresRequest();
 }

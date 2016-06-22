@@ -24,6 +24,10 @@ public class RequestTask extends AsyncTask<Object, Integer, Object> {
     @Override
     protected Object doInBackground(Object... params) {
         try {
+            Object object1 = mRequest.mCallback.onPresRequest();
+            if (object1 != null) {
+                return object1;
+            }
             HttpResponse response = HttpClientUtil.execute(mRequest);
             Object object = mRequest.mCallback.handle(response, new IProgressListener() {
                 @Override
