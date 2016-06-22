@@ -96,6 +96,11 @@ public class SplashActivity extends BaseActivity {
                                 public void onProgressUpdate(int curPos, int contentLength) {
 
                                 }
+
+                                @Override
+                                public Object onPreHandle(Object object) {
+                                    return object;
+                                }
                             }
 
 
@@ -120,6 +125,12 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onProgressUpdate(int curPos, int contentLength) {
                 mTvProgress.setText(curPos + "xxxxx" + contentLength);
+            }
+
+            @Override
+            public Object onPreHandle(Object object) {
+                // 比如需要把数据顺序再重新排列一下，或者插入到数据库中等等
+                return object;
             }
         }.setPath(path));
         request.execute();

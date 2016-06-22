@@ -25,12 +25,13 @@ public class RequestTask extends AsyncTask<Object, Integer, Object> {
     protected Object doInBackground(Object... params) {
         try {
             HttpResponse response = HttpClientUtil.execute(mRequest);
-            return mRequest.mCallback.handle(response, new IProgressListener() {
+            Object object = mRequest.mCallback.handle(response, new IProgressListener() {
                 @Override
                 public void onProgressUpdate(int curPos, int contentLength) {
                     publishProgress(curPos, contentLength);
                 }
             });
+            return mRequest.mCallback.onPreHandle(object);
         } catch (IOException e) {
             e.printStackTrace();
             return e;
