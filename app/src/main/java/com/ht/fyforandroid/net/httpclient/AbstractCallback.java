@@ -49,11 +49,11 @@ public abstract class AbstractCallback implements ICallBack{
                         byte[] b = new byte[IO_BUFFER_SIZE];
                         int read;
                         long curPos = 0;
-                        long length = entity.getContentLength();
+//                        long length = entity.getContentLength();
                         while ((read = in.read(b)) != -1) {
                             // update progress
                             curPos += read;
-                            iProgressListener.onProgressUpdate((int)(curPos/1024), (int)(length/1024));
+                            iProgressListener.onProgressUpdate((int) (curPos / 1024), (int) (entity.getContentLength()));
                             fos.write(b, 0, read);
                         }
 

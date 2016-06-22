@@ -119,7 +119,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onProgressUpdate(int curPos, int contentLength) {
-                mTvProgress.setText(curPos/contentLength + "");
+                mTvProgress.setText(curPos + "xxxxx" + contentLength);
             }
         }.setPath(path));
         request.execute();
