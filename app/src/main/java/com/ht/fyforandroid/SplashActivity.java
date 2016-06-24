@@ -101,6 +101,11 @@ public class SplashActivity extends BaseActivity {
                                 public Object onPreHandle(Object object) {
                                     return object;
                                 }
+
+                                @Override
+                                public Object onPresRequest() {
+                                    return null;
+                                }
                             }
 
 
@@ -131,6 +136,11 @@ public class SplashActivity extends BaseActivity {
             public Object onPreHandle(Object object) {
                 // 比如需要把数据顺序再重新排列一下，或者插入到数据库中等等
                 return object;
+            }
+
+            @Override
+            public Object onPresRequest() {
+                return null;
             }
         }.setPath(path));
         request.execute();
