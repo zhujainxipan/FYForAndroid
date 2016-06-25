@@ -157,4 +157,9 @@ public abstract class Request<T> implements Comparable<Request<T>> {
     public abstract T parseResponse(Response response);
 
 
+    public static interface RequestListener<T> {
+        void onComplete(int stConde, T result, String msg);
+    }
+
+
 }
