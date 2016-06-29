@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.httpclient;
+package com.ht.fyforandroid.net.staynet;
 
 import com.ht.fyforandroid.util.TextUtil;
 
@@ -8,7 +8,6 @@ import org.apache.http.HttpStatus;
 import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

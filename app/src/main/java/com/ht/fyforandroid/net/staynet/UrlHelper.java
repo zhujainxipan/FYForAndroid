@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.httpclient;
+package com.ht.fyforandroid.net.staynet;
 
 /**
  * Created by niehongtao on 16/6/20.

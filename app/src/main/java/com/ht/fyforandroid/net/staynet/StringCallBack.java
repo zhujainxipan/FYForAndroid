@@ -1,9 +1,7 @@
-package com.ht.fyforandroid.net.httpclient;
+package com.ht.fyforandroid.net.staynet;
 
 import com.ht.fyforandroid.util.FileUtil;
 import com.ht.fyforandroid.util.TextUtil;
-
-import org.apache.commons.io.IOUtils;
 
 /**
  * Created by niehongtao on 16/6/18.

@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.AppManager;
-import com.ht.fyforandroid.widget.LoadingDialog;
+import com.ht.fyforandroid.dialog.LoadingDialog;
 
 import butterknife.ButterKnife;
 

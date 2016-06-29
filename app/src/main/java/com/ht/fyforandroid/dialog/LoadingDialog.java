@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.widget;
+package com.ht.fyforandroid.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

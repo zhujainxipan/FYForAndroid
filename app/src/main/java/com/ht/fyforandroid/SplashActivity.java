@@ -10,20 +10,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.net.httpclient.JsonCallBack;
-import com.ht.fyforandroid.net.httpclient.Request;
-import com.ht.fyforandroid.net.httpclient.StringCallBack;
-import com.ht.fyforandroid.net.httpclient.UrlHelper;
+import com.ht.fyforandroid.net.staynet.JsonCallBack;
+import com.ht.fyforandroid.net.staynet.Request;
+import com.ht.fyforandroid.net.staynet.StringCallBack;
+import com.ht.fyforandroid.net.staynet.UrlHelper;
 import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
 import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SplashActivity extends BaseActivity {

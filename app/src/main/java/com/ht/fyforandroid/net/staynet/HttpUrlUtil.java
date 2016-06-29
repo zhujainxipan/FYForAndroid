@@ -1,14 +1,9 @@
-package com.ht.fyforandroid.net.httpurlconnnection;
-
-import android.content.ComponentName;
-
-import com.ht.fyforandroid.net.httpclient.Request;
+package com.ht.fyforandroid.net.staynet;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Created by niehongtao on 16/6/22.
