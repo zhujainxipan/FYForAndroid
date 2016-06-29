@@ -1,9 +1,11 @@
 package com.ht.fyforandroid;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,8 @@ import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.ht.fyforandroid.util.ImageLoaderHelper;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 
@@ -99,7 +103,29 @@ public class SplashActivity extends BaseActivity {
         mBtnImageLoader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageLoaderHelper.getInstance().loadImageFromUrl(mIvTest, "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png");
+                ImageLoaderHelper.getInstance().loadImageWithListener(mIvTest,
+                        "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png",
+                        new ImageLoadingListener() {
+                            @Override
+                            public void onLoadingStarted(String s, View view) {
+
+                            }
+
+                            @Override
+                            public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+                            }
+
+                            @Override
+                            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                                Log.d("wwww", "加载成功");
+                            }
+
+                            @Override
+                            public void onLoadingCancelled(String s, View view) {
+
+                            }
+                        });
             }
         });
     }
