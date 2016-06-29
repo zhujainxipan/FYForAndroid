@@ -17,16 +17,12 @@ import java.util.Stack;
  */
 public class BaseApplication extends Application {
     public static Context context;
-    public static int sWidthPix;
-
 
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = this;
-
-        sWidthPix = getResources().getDisplayMetrics().widthPixels;
 
         // 配置imageloader
         initImageLoader();
@@ -41,7 +37,6 @@ public class BaseApplication extends Application {
                 .diskCacheFileCount(300)
                 .imageDownloader(new BaseImageDownloader(context))
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
-                .diskCacheExtraOptions(sWidthPix / 3, sWidthPix / 3, null)
                 .build();
         ImageLoader.getInstance().init(config);
     }

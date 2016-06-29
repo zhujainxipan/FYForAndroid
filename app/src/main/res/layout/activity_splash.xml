@@ -1,74 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     >
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:text="niidddddddddddddddddddddddd"
-        />
-
-    <Button
-        android:id="@+id/btn_enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="进入主页"
-        />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         >
-        <Button
-            android:id="@+id/btn_test_httpclient"
+
+        <TextView
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试httpclient"
+            android:layout_gravity="center"
+            android:text="niidddddddddddddddddddddddd"
+            android:textColor="#000"
             />
 
         <Button
-            android:id="@+id/btn_test_json"
+            android:id="@+id/btn_enter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试json解析"
+            android:text="进入主页"
             />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                android:id="@+id/btn_test_httpclient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试httpclient"
+                />
+
+            <Button
+                android:id="@+id/btn_test_json"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试json解析"
+                />
+
+            <Button
+                android:id="@+id/btn_test_simplenet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="simplenet测试"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ccc"
+            android:text="进度显示区"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ccc"
+            android:text="测试结果显示区域"
+            android:textColor="#000"
+            />
+
         <Button
-            android:id="@+id/btn_test_simplenet"
+            android:id="@+id/btn_imageloader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="simplenet测试"
+            android:text="测试imageloader"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_test"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#ccc"
             />
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:background="#ccc"
-        android:text="进度显示区"
-        />
-
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:background="#ccc"
-        android:text="测试结果显示区域"
-        />
-
-
-</LinearLayout>
+</ScrollView>

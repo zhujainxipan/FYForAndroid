@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
@@ -18,6 +19,7 @@ import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
 import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
+import com.ht.fyforandroid.util.ImageLoaderHelper;
 
 import java.io.File;
 
@@ -38,6 +40,10 @@ public class SplashActivity extends BaseActivity {
     TextView mTvProgress;
     @InjectView(R.id.btn_test_simplenet)
     Button mSimpleButton;
+    @InjectView(R.id.btn_imageloader)
+    Button mBtnImageLoader;
+    @InjectView(R.id.iv_test)
+    ImageView mIvTest;
     private DoubleClickExitHelper mDoubleClickExit;
     // 1、构建请求队列
     RequestQueue mQueue = SimpleNet.newRequestQueue();
@@ -87,6 +93,13 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 sendStringRequest();
+            }
+        });
+
+        mBtnImageLoader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageLoaderHelper.getInstance().loadImageFromUrl(mIvTest, "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png");
             }
         });
     }

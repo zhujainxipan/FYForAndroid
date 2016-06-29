@@ -12,9 +12,10 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
  * Created by niehongtao on 16/6/29.
  */
 public class ImageLoaderHelper {
+    private static ImageLoaderHelper instance = new ImageLoaderHelper();
 
     //两像素圆角
-    public static final DisplayImageOptions optionsRounded = new DisplayImageOptions.Builder()
+    private DisplayImageOptions optionsRounded = new DisplayImageOptions.Builder()
             .showImageOnLoading(R.mipmap.ic_launcher)
             .showImageForEmptyUri(R.mipmap.ic_launcher)
             .showImageOnFail(R.mipmap.ic_launcher)
@@ -24,9 +25,14 @@ public class ImageLoaderHelper {
             .displayer(new RoundedBitmapDisplayer(2))
             .build();
 
-    public ImageLoader imageLoader = ImageLoader.getInstance();
+    private ImageLoader imageLoader = ImageLoader.getInstance();
 
-    public ImageLoaderHelper() {
+
+    public static ImageLoaderHelper getInstance() {
+        if (instance == null) {
+            instance = new ImageLoaderHelper();
+        }
+        return instance;
     }
 
 
@@ -41,6 +47,4 @@ public class ImageLoaderHelper {
     public void loadImageFromUrl(ImageView imageView, String url, DisplayImageOptions displayImageOptions) {
         imageLoader.displayImage(url, imageView, displayImageOptions);
     }
-
-
 }
