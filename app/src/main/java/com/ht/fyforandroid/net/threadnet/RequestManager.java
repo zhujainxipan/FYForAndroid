@@ -3,9 +3,10 @@ package com.ht.fyforandroid.net.threadnet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 
-public class RequestManager {
+public class RequestManager implements Executor{
     private static RequestManager instance = new RequestManager();
     // 异步请求列表
     ArrayList<HttpRequest> requestList = new ArrayList<HttpRequest>();
@@ -64,5 +65,15 @@ public class RequestManager {
 
         addRequest(request);
         return request;
+    }
+
+
+    /**
+     * 执行网络请求
+     * @param request
+     */
+    @Override
+    public void execute(Runnable request) {
+        DefaultThreadPool.getInstance().execute(request);
     }
 }
