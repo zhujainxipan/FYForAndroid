@@ -68,10 +68,10 @@ public class HttpRequest implements Runnable {
 					for (final RequestParameter p : parameter) {
 						if (paramBuffer.length() == 0) {
 							paramBuffer.append(p.getName() + "="
-									+ BaseUtils.UrlEncodeUnicode(p.getValue()));
+									+ Utils.UrlEncodeUnicode(p.getValue()));
 						} else {
 							paramBuffer.append("&" + p.getName() + "="
-									+ BaseUtils.UrlEncodeUnicode(p.getValue()));
+									+ Utils.UrlEncodeUnicode(p.getValue()));
 						}
 					}
 

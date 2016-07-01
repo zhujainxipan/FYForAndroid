@@ -16,12 +16,10 @@ public class RemoteService {
 		return RemoteService.service;
 	}
 
-	public void invoke(final BaseActivity activity,
-			final String apiKey,
+	public void invoke(final URLData urlData,
 			final List<RequestParameter> params,
 			final RequestCallback callBack) {
-		final URLData urlData = UrlConfigManager.findURL(activity, apiKey);
-		HttpRequest request = activity.getRequestManager().createRequest(
+		HttpRequest request = RequestManager.getInstance().createRequest(
 				urlData, params, callBack);
 		DefaultThreadPool.getInstance().execute(request);
 	}
