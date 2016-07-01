@@ -1,5 +1,7 @@
 package com.ht.fyforandroid.net.asynctasknet;
 
+import com.ht.fyforandroid.net.asynctasknet.callback.ICallBack;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

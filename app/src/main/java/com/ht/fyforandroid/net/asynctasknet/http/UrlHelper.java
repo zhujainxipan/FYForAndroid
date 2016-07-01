@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.asynctasknet;
+package com.ht.fyforandroid.net.asynctasknet.http;
 
 /**
  * Created by niehongtao on 16/6/20.

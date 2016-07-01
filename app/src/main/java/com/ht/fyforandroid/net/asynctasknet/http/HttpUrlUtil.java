@@ -1,4 +1,6 @@
-package com.ht.fyforandroid.net.asynctasknet;
+package com.ht.fyforandroid.net.asynctasknet.http;
+
+import com.ht.fyforandroid.net.asynctasknet.Request;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

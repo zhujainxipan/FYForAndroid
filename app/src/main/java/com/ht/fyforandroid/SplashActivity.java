@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.net.asynctasknet.JsonCallBack;
+import com.ht.fyforandroid.net.asynctasknet.callback.JsonCallBack;
 import com.ht.fyforandroid.net.asynctasknet.Request;
-import com.ht.fyforandroid.net.asynctasknet.StringCallBack;
-import com.ht.fyforandroid.net.asynctasknet.UrlHelper;
+import com.ht.fyforandroid.net.asynctasknet.callback.StringCallBack;
+import com.ht.fyforandroid.net.asynctasknet.http.UrlHelper;
 import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
 import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;

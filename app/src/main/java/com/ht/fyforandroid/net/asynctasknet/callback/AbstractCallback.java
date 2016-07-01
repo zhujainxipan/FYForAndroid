@@ -1,5 +1,6 @@
-package com.ht.fyforandroid.net.asynctasknet;
+package com.ht.fyforandroid.net.asynctasknet.callback;
 
+import com.ht.fyforandroid.net.asynctasknet.IProgressListener;
 import com.ht.fyforandroid.util.TextUtil;
 
 import org.apache.http.HttpEntity;

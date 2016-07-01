@@ -2,6 +2,8 @@ package com.ht.fyforandroid.net.asynctasknet;
 
 import android.os.AsyncTask;
 
+import com.ht.fyforandroid.net.asynctasknet.http.HttpClientUtil;
+
 import org.apache.http.HttpResponse;
 
 import java.io.IOException;
