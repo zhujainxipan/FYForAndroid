@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.staynet;
+package com.ht.fyforandroid.net.asynctasknet;
 
 /**
  * Created by niehongtao on 16/6/20.

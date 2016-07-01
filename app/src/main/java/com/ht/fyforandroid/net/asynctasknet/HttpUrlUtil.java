@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.staynet;
+package com.ht.fyforandroid.net.asynctasknet;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

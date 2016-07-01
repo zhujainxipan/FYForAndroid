@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.staynet;
+package com.ht.fyforandroid.net.asynctasknet;
 
 import com.ht.fyforandroid.util.FileUtil;
 import com.ht.fyforandroid.util.TextUtil;

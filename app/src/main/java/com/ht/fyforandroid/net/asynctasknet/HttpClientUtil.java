@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.staynet;
+package com.ht.fyforandroid.net.asynctasknet;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
