@@ -11,6 +11,7 @@ import java.util.List;
 public class RequestManager {
     private static RequestManager instance = new RequestManager();
     // 异步请求列表
+    //todo 这个队列真的有必要吗？
     private ArrayList<HttpRequest> requestList = new ArrayList<HttpRequest>();
 
     private RequestManager() {
@@ -33,6 +34,8 @@ public class RequestManager {
     /**
      * 取消网络请求
      */
+    //todo 调用这个方法真的能起到取消请求的作用吗，我保持怀疑
+    // 应该是是直接调用DefaultThreadPool里的方法吧，removeTaskFromQueue
     public void cancelRequest() {
         if ((requestList != null) && (requestList.size() > 0)) {
             for (final HttpRequest request : requestList) {
