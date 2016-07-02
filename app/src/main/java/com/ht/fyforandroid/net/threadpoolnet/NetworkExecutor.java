@@ -23,7 +23,7 @@ import android.os.Handler;
 import com.alibaba.fastjson.JSON;
 
 /**
- * HttpRequest是发起网络请求的地方，它实现了Runnable，从而让DefaultThreadPool
+ * NetworkExecutor是发起网络请求的地方，它实现了Runnable，从而让DefaultThreadPool
  * 可以分配新的线程来执行它，所以，所有的请求逻辑都在run方法中
  */
 public class NetworkExecutor implements Runnable {

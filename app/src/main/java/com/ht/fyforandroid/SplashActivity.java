@@ -21,7 +21,7 @@ import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
 import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
-import com.ht.fyforandroid.util.ImageLoaderHelper;
+import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
