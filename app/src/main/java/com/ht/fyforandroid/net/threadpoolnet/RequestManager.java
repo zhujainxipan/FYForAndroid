@@ -1,6 +1,8 @@
 package com.ht.fyforandroid.net.threadpoolnet;
 
-import java.util.List;
+import com.ht.fyforandroid.net.threadpoolnet.request.Request;
+import com.ht.fyforandroid.net.threadpoolnet.thread.DefaultThreadPool;
+import com.ht.fyforandroid.net.threadpoolnet.thread.NetworkExecutor;
 
 /**
  * 一个单例，你可以调用它来创建一个request，
@@ -28,21 +30,10 @@ public class RequestManager {
     }
 
     /**
-     * 无参数调用
-     */
-    public void createRequest(final Request request,
-                              final RequestCallback requestCallback) {
-        this.createRequest(request, null, requestCallback);
-    }
-
-    /**
      * 有参数调用
      */
-    public void createRequest(final Request request,
-                              final List<RequestParameter> params,
-                              final RequestCallback requestCallback) {
-        final NetworkExecutor executor = new NetworkExecutor(request, params,
-                requestCallback);
+    public void executeRequest(Request request) {
+        final NetworkExecutor executor = new NetworkExecutor(request);
         DefaultThreadPool.getInstance().execute(executor);
     }
 }
