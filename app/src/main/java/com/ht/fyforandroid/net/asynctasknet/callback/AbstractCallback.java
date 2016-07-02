@@ -32,7 +32,7 @@ public abstract class AbstractCallback implements ICallBack{
             switch (response.getStatusLine().getStatusCode()) {
                 // 返回时200的时候，我就去解析数据
                 case HttpStatus.SC_OK:
-                    // 文件，把服务器的返回直接写到文件里面
+                    // 文件，把服务器的返回直接写到文件里面,一般涉及文件的下载这里会有这一步吧，或者说加文件缓存的话
                     if (TextUtil.isValidate(path)) {
                         FileOutputStream fos = new FileOutputStream(path);
                         InputStream in = null;

@@ -1,18 +1,13 @@
 package com.ht.fyforandroid.net.threadpoolnet;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 一个单例，你可以调用它来创建一个request，并将其添加到requestList中，
+ * 一个单例，你可以调用它来创建一个request，
  * 然后放到DefaultThreadPool的一个线程池中去执行这个request
  */
 public class RequestManager {
     private static RequestManager instance = new RequestManager();
-    // 异步请求列表
-    //todo 这个队列真的有必要吗？
-    private ArrayList<HttpRequest> requestList = new ArrayList<HttpRequest>();
 
     private RequestManager() {
     }
@@ -25,49 +20,29 @@ public class RequestManager {
     }
 
     /**
-     * 添加Request到列表
-     */
-    private void addRequest(final HttpRequest request) {
-        requestList.add(request);
-    }
-
-    /**
      * 取消网络请求
      */
-    //todo 调用这个方法真的能起到取消请求的作用吗，我保持怀疑
     // 应该是是直接调用DefaultThreadPool里的方法吧，removeTaskFromQueue
     public void cancelRequest() {
-        if ((requestList != null) && (requestList.size() > 0)) {
-            for (final HttpRequest request : requestList) {
-                if (request.getRequest() != null) {
-                    try {
-                        request.getRequest().abort();
-                        requestList.remove(request.getRequest());
-                    } catch (final UnsupportedOperationException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+        DefaultThreadPool.getInstance().removeAllTask();
     }
 
     /**
      * 无参数调用
      */
-    public void createRequest(final URLData urlData,
+    public void createRequest(final Request request,
                               final RequestCallback requestCallback) {
-        this.createRequest(urlData, null, requestCallback);
+        this.createRequest(request, null, requestCallback);
     }
 
     /**
      * 有参数调用
      */
-    public void createRequest(final URLData urlData,
+    public void createRequest(final Request request,
                               final List<RequestParameter> params,
                               final RequestCallback requestCallback) {
-        final HttpRequest request = new HttpRequest(urlData, params,
+        final NetworkExecutor executor = new NetworkExecutor(request, params,
                 requestCallback);
-        addRequest(request);
-        DefaultThreadPool.getInstance().execute(request);
+        DefaultThreadPool.getInstance().execute(executor);
     }
 }

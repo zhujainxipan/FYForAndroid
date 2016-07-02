@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
  * 线程池 、缓冲队列
  * DefaultThreadPool仅仅是对ThreadPoolExecutor和ArrayBlockingQueue的简单封装。
  * 我们可以认为它是一个线程池，每发起一次请求（runnable），就由线程池分配一个新的线程来执行该请求。
- *
  */
 public class DefaultThreadPool {
     // 阻塞队列最大任务数量
@@ -25,7 +24,7 @@ public class DefaultThreadPool {
 
     private static DefaultThreadPool instance = null;
     /**
-     * 线程池，目前是十个线程，
+     * 线程池，目前是十个线程
      */
     static AbstractExecutorService pool = new ThreadPoolExecutor(
             DefaultThreadPool.THREAD_POOL_SIZE,
@@ -40,18 +39,18 @@ public class DefaultThreadPool {
         return DefaultThreadPool.instance;
     }
 
-    public static void removeAllTask() {
+    public void removeAllTask() {
         DefaultThreadPool.blockingQueue.clear();
     }
 
-    public static void removeTaskFromQueue(final Object obj) {
+    public void removeTaskFromQueue(final Object obj) {
         DefaultThreadPool.blockingQueue.remove(obj);
     }
 
     /**
      * 关闭，并等待任务执行完成，不接受新任务
      */
-    public static void shutdown() {
+    public void shutdown() {
         if (DefaultThreadPool.pool != null) {
             DefaultThreadPool.pool.shutdown();
         }
@@ -60,7 +59,7 @@ public class DefaultThreadPool {
     /**
      * 关闭，立即关闭，并挂起所有正在执行的线程，不接受新任务
      */
-    public static void shutdownRightnow() {
+    public void shutdownRightnow() {
         if (DefaultThreadPool.pool != null) {
             DefaultThreadPool.pool.shutdownNow();
             try {

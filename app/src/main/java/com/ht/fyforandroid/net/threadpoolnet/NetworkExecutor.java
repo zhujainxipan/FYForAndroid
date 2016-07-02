@@ -26,9 +26,9 @@ import com.alibaba.fastjson.JSON;
  * HttpRequest是发起网络请求的地方，它实现了Runnable，从而让DefaultThreadPool
  * 可以分配新的线程来执行它，所以，所有的请求逻辑都在run方法中
  */
-public class HttpRequest implements Runnable {
+public class NetworkExecutor implements Runnable {
     private HttpUriRequest request = null;
-    private URLData urlData = null;
+    private Request mRequest = null;
     private RequestCallback requestCallback = null;
     private List<RequestParameter> parameter = null;
     private String url = null;
@@ -37,11 +37,11 @@ public class HttpRequest implements Runnable {
 
     protected Handler handler;
 
-    public HttpRequest(final URLData data, final List<RequestParameter> params,
-                       final RequestCallback callBack) {
-        urlData = data;
+    public NetworkExecutor(final Request request, final List<RequestParameter> params,
+                           final RequestCallback callBack) {
+        mRequest = request;
 
-        url = urlData.getUrl();
+        url = mRequest.getUrl();
         this.parameter = params;
         requestCallback = callBack;
 
@@ -64,7 +64,7 @@ public class HttpRequest implements Runnable {
     @Override
     public void run() {
         try {
-            if (urlData.getNetType().equals("get")) {
+            if (mRequest.getMethod() == Request.RequestMethod.GET) {
                 // 添加参数
                 final StringBuffer paramBuffer = new StringBuffer();
                 if ((parameter != null) && (parameter.size() > 0)) {
@@ -83,7 +83,7 @@ public class HttpRequest implements Runnable {
                 } else {
                     request = new HttpGet(url);
                 }
-            } else if (urlData.getNetType().equals("post")) {
+            } else if (mRequest.getMethod() == Request.RequestMethod.POST) {
                 request = new HttpPost(url);
                 // 添加参数
                 if ((parameter != null) && (parameter.size() > 0)) {
@@ -127,7 +127,7 @@ public class HttpRequest implements Runnable {
 
                             @Override
                             public void run() {
-                                HttpRequest.this.requestCallback
+                                NetworkExecutor.this.requestCallback
                                         .onSuccess(responseInJson.getResult());
                             }
 
@@ -156,7 +156,7 @@ public class HttpRequest implements Runnable {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                HttpRequest.this.requestCallback.onFail(errorMsg);
+                NetworkExecutor.this.requestCallback.onFail(errorMsg);
             }
         });
     }
