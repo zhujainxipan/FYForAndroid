@@ -20,6 +20,8 @@ import com.ht.fyforandroid.net.asynctasknet.http.UrlHelper;
 import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
 import com.ht.fyforandroid.net.simplenet.core.SimpleNet;
 import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
+import com.ht.fyforandroid.net.threadpoolnet.RequestManager;
+import com.ht.fyforandroid.net.threadpoolnet.request.RequestCallback;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -48,6 +50,8 @@ public class SplashActivity extends BaseActivity {
     Button mBtnImageLoader;
     @InjectView(R.id.iv_test)
     ImageView mIvTest;
+    @InjectView(R.id.btn_test_threadpool)
+    Button mThreadPoolButton;
     private DoubleClickExitHelper mDoubleClickExit;
     // 1、构建请求队列
     RequestQueue mQueue = SimpleNet.newRequestQueue();
@@ -76,6 +80,30 @@ public class SplashActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        mThreadPoolButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestCallback callback = new RequestCallback() {
+                    @Override
+                    public void onSuccess(Object response) {
+                        mTvResult.setText(response.toString());
+                    }
+
+                    @Override
+                    public void onFail(String errorMessage) {
+
+                    }
+                };
+                com.ht.fyforandroid.net.threadpoolnet.request.StringRequest request = new com.ht.fyforandroid.net.threadpoolnet.request.StringRequest(
+                        "http://www.baidu.com",
+                        com.ht.fyforandroid.net.threadpoolnet.request.Request.RequestMethod.GET,
+                        callback,
+                        null
+                );
+                RequestManager.getInstance().executeRequest(request);
             }
         });
 

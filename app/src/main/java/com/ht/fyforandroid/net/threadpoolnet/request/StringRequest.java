@@ -14,6 +14,6 @@ public class StringRequest extends Request {
 
     @Override
     public Object parseResponse(Response response) {
-        return response.toString();
+        return new String(response.getRawData());
     }
 }
