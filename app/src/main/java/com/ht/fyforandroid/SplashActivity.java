@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.ht.fyforandroid.net.asynctasknet.Request;
@@ -58,6 +59,10 @@ public class SplashActivity extends BaseActivity {
     Button mBtnPicasso;
     @InjectView(R.id.iv_picasso_test)
     ImageView mIvPicassoTest;
+    @InjectView(R.id.btn_glide)
+    Button mBtnGlide;
+    @InjectView(R.id.iv_glide_test)
+    ImageView mIvGlideTest;
     private DoubleClickExitHelper mDoubleClickExit;
     // 1、构建请求队列
     RequestQueue mQueue = SimpleNet.newRequestQueue();
@@ -80,6 +85,15 @@ public class SplashActivity extends BaseActivity {
                 SplashActivity.super.mLoadingDialog.hideLoading();
             }
         }, 5000);
+
+        mBtnGlide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Glide.with(SplashActivity.this)
+                        .load("http://www.baidu.com/img/bdlogo.png")
+                        .into(mIvGlideTest);
+            }
+        });
 
         mBtnPicasso.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,5 +284,4 @@ public class SplashActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }

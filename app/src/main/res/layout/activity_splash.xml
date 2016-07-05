@@ -123,6 +123,23 @@
             />
 
 
+        <Button
+            android:id="@+id/btn_glide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试glide"
+            />
+
+
+        <ImageView
+            android:id="@+id/iv_glide_test"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#ccc"
+            />
+
+
+
     </LinearLayout>
 
 </ScrollView>
