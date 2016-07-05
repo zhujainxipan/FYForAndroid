@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.net.asynctasknet.callback.JsonCallBack;
+import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.ht.fyforandroid.net.asynctasknet.Request;
+import com.ht.fyforandroid.net.asynctasknet.callback.JsonCallBack;
 import com.ht.fyforandroid.net.asynctasknet.callback.StringCallBack;
 import com.ht.fyforandroid.net.asynctasknet.http.UrlHelper;
 import com.ht.fyforandroid.net.simplenet.core.RequestQueue;
@@ -23,12 +24,13 @@ import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.net.threadpoolnet.RequestManager;
 import com.ht.fyforandroid.net.threadpoolnet.request.RequestCallback;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
-import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SplashActivity extends BaseActivity {
@@ -52,6 +54,10 @@ public class SplashActivity extends BaseActivity {
     ImageView mIvTest;
     @InjectView(R.id.btn_test_threadpool)
     Button mThreadPoolButton;
+    @InjectView(R.id.btn_picasso)
+    Button mBtnPicasso;
+    @InjectView(R.id.iv_picasso_test)
+    ImageView mIvPicassoTest;
     private DoubleClickExitHelper mDoubleClickExit;
     // 1、构建请求队列
     RequestQueue mQueue = SimpleNet.newRequestQueue();
@@ -75,6 +81,12 @@ public class SplashActivity extends BaseActivity {
             }
         }, 5000);
 
+        mBtnPicasso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Picasso.with(SplashActivity.this).load("http://www.baidu.com/img/bdlogo.png").into(mIvPicassoTest);
+            }
+        });
         mBtnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -258,4 +270,5 @@ public class SplashActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 }
