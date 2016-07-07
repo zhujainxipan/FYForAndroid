@@ -380,8 +380,8 @@ public class TDeviceUtils {
     /**
      * 判断网络是否连接
      */
-    public static boolean checkNet(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context
+    public static boolean checkNet() {
+        ConnectivityManager cm = (ConnectivityManager) BaseApplication.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         return info != null;// 网络是否连接

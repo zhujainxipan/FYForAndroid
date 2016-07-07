@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
-import org.kymjs.kjframe.utils.SystemTool;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -279,7 +278,7 @@ public class FileUtils {
      * 把uri转为File对象
      */
     public static File uri2File(Activity aty, Uri uri) {
-        if (SystemTool.getSDKVersion() < 11) {
+        if (TDeviceUtils.getSDKVersion() < 11) {
             // 在API11以下可以使用：managedQuery
             String[] proj = {MediaStore.Images.Media.DATA};
             @SuppressWarnings("deprecation")

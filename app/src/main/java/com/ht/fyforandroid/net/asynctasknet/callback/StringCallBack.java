@@ -11,7 +11,7 @@ public abstract class StringCallBack extends AbstractCallback{
     @Override
     protected Object bindData(String content) {
         if (TextUtil.isValidate(path)) {
-            return FileUtils.readFromFile(path);
+            return FileUtils.readFile(path);
         }
         return content;
     }
