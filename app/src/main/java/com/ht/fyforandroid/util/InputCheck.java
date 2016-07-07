@@ -27,7 +27,7 @@ public class InputCheck {
     public static boolean checkEmail(Context context, String s) {
         boolean result = isEmail(s);
         if (!result) {
-            ToastUtil.shortShow("您输入的 Email 格式错误");
+            ToastUtils.shortShow("您输入的 Email 格式错误");
         }
 
         return result;
@@ -36,7 +36,7 @@ public class InputCheck {
     public static boolean checkPhone(Context context, String s) {
         boolean result = isPhone(s);
         if (!result) {
-            ToastUtil.shortShow("您输入的电话号码格式错误");
+            ToastUtils.shortShow("您输入的电话号码格式错误");
         }
         return result;
     }

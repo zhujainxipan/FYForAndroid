@@ -2,7 +2,7 @@ package com.ht.fyforandroid.cache;
 
 import android.content.Context;
 
-import com.ht.fyforandroid.util.TDevice;
+import com.ht.fyforandroid.util.TDeviceUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -121,7 +121,7 @@ public class CacheManager {
         }
         long existTime = System.currentTimeMillis() - data.lastModified();
         boolean failure = false;
-        if (TDevice.getNetworkType() == TDevice.NETTYPE_WIFI) {
+        if (TDeviceUtils.getNetworkType() == TDeviceUtils.NETTYPE_WIFI) {
             failure = existTime > wifi_cache_time ? true : false;
         } else {
             failure = existTime > other_cache_time ? true : false;

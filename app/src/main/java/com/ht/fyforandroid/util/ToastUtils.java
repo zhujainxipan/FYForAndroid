@@ -8,7 +8,7 @@ import com.ht.fyforandroid.BaseApplication;
  * Created by niehongtao on 16/5/21.
  * 吐司工具类
  */
-public class ToastUtil {
+public class ToastUtils {
     /**
      * 系统默认短时间吐司
      *

@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.ht.fyforandroid.R;
-import com.ht.fyforandroid.util.TDevice;
+import com.ht.fyforandroid.util.TDeviceUtils;
 
 /**
  * Created by niehongtao on 16/5/26.
@@ -85,7 +85,7 @@ public class EmptyLayout extends LinearLayout {
         switch (i) {
             // 没有网络
             case NETWORK_ERROR:
-                if (TDevice.hasInternet()) {
+                if (TDeviceUtils.hasInternet()) {
                     mTextview.setText(R.string.error_view_load_error_click_to_refresh);
                     mImageView.setBackgroundResource(R.mipmap.pagefailed_bg);
                 } else {

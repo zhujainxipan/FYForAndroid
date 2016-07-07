@@ -323,7 +323,7 @@ public final class SystemTool {
                     // pkgList 得到该进程下运行的包名
                     String[] pkgList = process.pkgList;
                     for (String pkgName : pkgList) {
-                        ToastUtil.shortShow("======正在杀死包名：" + pkgName);
+                        ToastUtils.shortShow("======正在杀死包名：" + pkgName);
                         try {
                             am.killBackgroundProcesses(pkgName);
                             count++;
@@ -334,7 +334,7 @@ public final class SystemTool {
                     }
                 }
             }
-        ToastUtil.shortShow("清理了" + (getDeviceUsableMemory(cxt) - i) + "M内存");
+        ToastUtils.shortShow("清理了" + (getDeviceUsableMemory(cxt) - i) + "M内存");
         return count;
     }
 }

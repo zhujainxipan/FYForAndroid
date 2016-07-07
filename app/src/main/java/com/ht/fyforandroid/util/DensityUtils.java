@@ -15,10 +15,19 @@
  */
 package com.ht.fyforandroid.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Point;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
+import android.view.WindowManager;
+
+import com.ht.fyforandroid.BaseApplication;
+
+import java.lang.reflect.Field;
 
 /**
  * 系统屏幕的一些操作<br>
@@ -28,6 +37,8 @@ import android.util.TypedValue;
  * @version 1.1
  */
 public final class DensityUtils {
+    public static float displayDensity = 0.0F;
+
 
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
@@ -89,4 +100,104 @@ public final class DensityUtils {
         DisplayMetrics dm = aty.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
+
+    /**
+     * 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+     *
+     * @return
+     */
+    public static float getDensity() {
+        if (displayDensity == 0.0)
+            displayDensity = getDisplayMetrics().density;
+        return displayDensity;
+    }
+
+    public static DisplayMetrics getDisplayMetrics() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        ((WindowManager) BaseApplication.getContext().getSystemService(
+                Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(
+                displaymetrics);
+        return displaymetrics;
+    }
+
+    /**
+     * 获取当前activity真实的宽高
+     *
+     * @param activity
+     * @return
+     */
+    public static int[] getRealScreenSize(Activity activity) {
+        int[] size = new int[2];
+        int screenWidth = 0, screenHeight = 0;
+        WindowManager w = activity.getWindowManager();
+        Display d = w.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        d.getMetrics(metrics);
+        // since SDK_INT = 1;
+        screenWidth = metrics.widthPixels;
+        screenHeight = metrics.heightPixels;
+        // includes window decorations (statusbar bar/menu bar)
+        if (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17)
+            try {
+                screenWidth = (Integer) Display.class.getMethod("getRawWidth")
+                        .invoke(d);
+                screenHeight = (Integer) Display.class
+                        .getMethod("getRawHeight").invoke(d);
+            } catch (Exception ignored) {
+            }
+        // includes window decorations (statusbar bar/menu bar)
+        if (Build.VERSION.SDK_INT >= 17)
+            try {
+                Point realSize = new Point();
+                Display.class.getMethod("getRealSize", Point.class).invoke(d,
+                        realSize);
+                screenWidth = realSize.x;
+                screenHeight = realSize.y;
+            } catch (Exception ignored) {
+            }
+        size[0] = screenWidth;
+        size[1] = screenHeight;
+        return size;
+    }
+
+
+    public static int getStatusBarHeight() {
+        Class<?> c = null;
+        Object obj = null;
+        Field field = null;
+        int x = 0;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            return BaseApplication.getContext().getResources()
+                    .getDimensionPixelSize(x);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+
+
+    public static void setFullScreen(Activity activity) {
+        WindowManager.LayoutParams params = activity.getWindow()
+                .getAttributes();
+        params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        activity.getWindow().setAttributes(params);
+        activity.getWindow().addFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+
+    public static void cancelFullScreen(Activity activity) {
+        WindowManager.LayoutParams params = activity.getWindow()
+                .getAttributes();
+        params.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        activity.getWindow().setAttributes(params);
+        activity.getWindow().clearFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+
 }
