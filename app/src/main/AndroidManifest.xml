@@ -55,6 +55,8 @@
             android:label="MainActivity">
         </activity>
 
+        <activity android:name=".base.WebViewActivity"/>
+
     </application>
 
 </manifest>

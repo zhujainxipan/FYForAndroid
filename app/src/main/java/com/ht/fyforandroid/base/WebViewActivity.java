@@ -15,11 +15,11 @@ import android.widget.ProgressBar;
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.WebViewUtil;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
  * Created by niehongtao on 16/7/7.
+ * 进行仿微信加载WebView显示进度条,直接调用start()方法进行跳转.
  */
 public class WebViewActivity extends BaseActivity {
     @InjectView(R.id.webview_pb)
@@ -38,6 +38,7 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
+        WebViewActivity.super.mLoadingDialog.hideLoading();
         handleIntent();
         this.enableJavascript();
         this.enableCaching();
@@ -122,7 +123,7 @@ public class WebViewActivity extends BaseActivity {
 
     }
 
-    public static void start(Context context, String url, String title, boolean isShow) {
+    public static void startActivity(Context context, String url, String title, boolean isShow) {
         if (TextUtils.isEmpty(url)) throw new IllegalArgumentException("url must not be empty");
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra("url", url);
@@ -130,8 +131,8 @@ public class WebViewActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void start(Context context, String url, String title) {
-        start(context, url, title, false);
+    public static void startActivity(Context context, String url, String title) {
+        startActivity(context, url, title, false);
     }
 
     @Override

@@ -12,15 +12,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.base.WebViewActivity;
 import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SplashActivity extends BaseActivity {
@@ -40,6 +38,8 @@ public class SplashActivity extends BaseActivity {
     Button mBtnGlide;
     @InjectView(R.id.iv_glide_test)
     ImageView mIvGlideTest;
+    @InjectView(R.id.btn_webview)
+    Button mBtnWebview;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -60,6 +60,13 @@ public class SplashActivity extends BaseActivity {
                 SplashActivity.super.mLoadingDialog.hideLoading();
             }
         }, 5000);
+
+        mBtnWebview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WebViewActivity.startActivity(SplashActivity.this, "http://www.baidu.com/", "百度一下");
+            }
+        });
 
         mBtnGlide.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,4 +139,5 @@ public class SplashActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 }

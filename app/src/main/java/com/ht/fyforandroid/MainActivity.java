@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.base.SwipBackActivity;
 import com.ht.fyforandroid.widget.filter.DropDownButton;
 import com.ht.fyforandroid.widget.filter.DropdownItemObject;
 import com.ht.fyforandroid.widget.filter.DropdownListView;
@@ -21,7 +22,7 @@ import butterknife.InjectView;
 /**
  * Created by niehongtao on 16/6/16.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends SwipBackActivity {
     @InjectView(R.id.btn_close)
     Button mBtnClose;
     @InjectView(R.id.chooseType)
@@ -67,6 +68,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
         super.mLoadingDialog.hideLoading();
     }
 
