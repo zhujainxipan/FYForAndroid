@@ -20,7 +20,7 @@ public abstract class BaseActivity extends FragmentActivity {
     public LoadingDialog mLoadingDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    final protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getLayoutId() != 0) {
             View contentView = getLayoutInflater().inflate(getLayoutId(), null);
