@@ -10,7 +10,7 @@ import com.ht.fyforandroid.R;
  * Created by niehongtao on 16/7/7.
  * 继承ReplaceActivity 调用replaceFragment(new NewFragment) 使用Fragment代替Activity使用
  */
-public class ReplaceActivity extends BaseActivity {
+public abstract class ReplaceActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_replace;
