@@ -12,19 +12,19 @@ import com.ht.fyforandroid.BaseApplication;
  * 2. 电商客户端：记住账号
  * 3. 常用的：设置信息：例如是否加载大图、是否开启推送通知、是否开启双击返回等
  */
-public class SharedPreferenceHelper {
+public class PreferenceHelper {
     SharedPreferences mSharedPreferences;
     String name = "config";
-    private static SharedPreferenceHelper helper;
+    private static PreferenceHelper helper;
 
-    public static SharedPreferenceHelper getInstance() {
+    public static PreferenceHelper getInstance() {
         if (helper == null) {
-            helper = new SharedPreferenceHelper();
+            helper = new PreferenceHelper();
         }
         return helper;
     }
 
-    private SharedPreferenceHelper() {
+    private PreferenceHelper() {
         mSharedPreferences =
                 BaseApplication.getContext().getSharedPreferences(name, Context.MODE_PRIVATE);
     }

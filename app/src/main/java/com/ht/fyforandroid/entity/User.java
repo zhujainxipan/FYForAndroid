@@ -1,7 +1,7 @@
 package com.ht.fyforandroid.entity;
 
 import com.google.gson.Gson;
-import com.ht.fyforandroid.util.SharedPreferenceHelper;
+import com.ht.fyforandroid.util.PreferenceHelper;
 
 /**
  * Created by niehongtao on 16/5/21.
@@ -45,7 +45,7 @@ public class User {
     public void saveUserInfo(User user) {
         this.setUser(user);
         String userString = new Gson().toJson(user);
-        SharedPreferenceHelper.getInstance().putStringValue("user", userString);
+        PreferenceHelper.getInstance().putStringValue("user", userString);
     }
 
 
@@ -58,7 +58,7 @@ public class User {
     }
 
     private void clearnLoginInfo() {
-        SharedPreferenceHelper.getInstance().removeValue("user");
+        PreferenceHelper.getInstance().removeValue("user");
     }
 
     /**
@@ -68,7 +68,7 @@ public class User {
     public void updateUserInfo(User user) {
         this.setUser(user);
         String userString = new Gson().toJson(user);
-        SharedPreferenceHelper.getInstance().putStringValue("user", userString);
+        PreferenceHelper.getInstance().putStringValue("user", userString);
     }
 
 
