@@ -1,8 +1,7 @@
-package com.ht.fyforandroid;
+package com.ht.fyforandroid.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;

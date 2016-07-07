@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 
-import com.ht.fyforandroid.BaseApplication;
+import com.ht.fyforandroid.base.BaseApplication;
 
 import java.io.File;
 import java.lang.reflect.Field;
