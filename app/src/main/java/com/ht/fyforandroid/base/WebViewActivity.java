@@ -13,6 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.ht.fyforandroid.R;
+import com.ht.fyforandroid.util.WebViewUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
