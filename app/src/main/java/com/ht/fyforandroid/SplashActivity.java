@@ -1,20 +1,15 @@
 package com.ht.fyforandroid;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.net.ImageLoaderHelper;
 import com.ht.fyforandroid.net.asynctasknet.Request;
 import com.ht.fyforandroid.net.asynctasknet.callback.JsonCallBack;
 import com.ht.fyforandroid.net.asynctasknet.callback.StringCallBack;
@@ -25,13 +20,9 @@ import com.ht.fyforandroid.net.simplenet.requests.StringRequest;
 import com.ht.fyforandroid.net.threadpoolnet.RequestManager;
 import com.ht.fyforandroid.net.threadpoolnet.request.RequestCallback;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class SplashActivity extends BaseActivity {
@@ -86,29 +77,53 @@ public class SplashActivity extends BaseActivity {
             }
         }, 5000);
 
-        mBtnGlide.setOnClickListener(new View.OnClickListener() {
+
+        threadPoolNetTest();
+
+        systaskNetTest();
+
+        simpleNetTest();
+
+    }
+
+
+    /**
+     * simpletest网络框架测试
+     */
+    private void simpleNetTest() {
+        mSimpleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(SplashActivity.this)
-                        .load("http://www.baidu.com/img/bdlogo.png")
-                        .into(mIvGlideTest);
+                sendStringRequest();
+            }
+        });
+    }
+
+
+    /**
+     * 异步任务网络框架测试
+     */
+    private void systaskNetTest() {
+        mBtnTestHttpclient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestString();
             }
         });
 
-        mBtnPicasso.setOnClickListener(new View.OnClickListener() {
+        mBtnTestJson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Picasso.with(SplashActivity.this).load("http://www.baidu.com/img/bdlogo.png").into(mIvPicassoTest);
+                requestJson();
             }
         });
-        mBtnEnter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
 
+
+    /**
+     * 线程池网络框架测试
+     */
+    private void threadPoolNetTest() {
         mThreadPoolButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,56 +145,6 @@ public class SplashActivity extends BaseActivity {
                         null
                 );
                 RequestManager.getInstance().executeRequest(request);
-            }
-        });
-
-        mBtnTestHttpclient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestString();
-            }
-        });
-
-        mBtnTestJson.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestJson();
-            }
-        });
-
-        mSimpleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendStringRequest();
-            }
-        });
-
-        mBtnImageLoader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ImageLoaderHelper.getInstance().loadImageWithListener(mIvTest,
-                        "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png",
-                        new ImageLoadingListener() {
-                            @Override
-                            public void onLoadingStarted(String s, View view) {
-
-                            }
-
-                            @Override
-                            public void onLoadingFailed(String s, View view, FailReason failReason) {
-
-                            }
-
-                            @Override
-                            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                                Log.d("wwww", "加载成功");
-                            }
-
-                            @Override
-                            public void onLoadingCancelled(String s, View view) {
-
-                            }
-                        });
             }
         });
     }

@@ -25,7 +25,7 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.ht.fyforandroid.BaseApplication;
+import com.ht.fyforandroid.base.BaseApplication;
 
 import java.lang.reflect.Field;
 

@@ -2,7 +2,7 @@ package com.ht.fyforandroid.util;
 
 import android.widget.Toast;
 
-import com.ht.fyforandroid.BaseApplication;
+import com.ht.fyforandroid.base.BaseApplication;
 
 /**
  * Created by niehongtao on 16/5/21.
