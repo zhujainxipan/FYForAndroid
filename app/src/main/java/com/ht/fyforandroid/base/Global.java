@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.consts;
+package com.ht.fyforandroid.base;
 
 /**
  * Created by niehongtao on 16/6/17.

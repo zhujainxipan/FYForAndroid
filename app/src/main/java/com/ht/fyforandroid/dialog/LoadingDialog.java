@@ -61,7 +61,7 @@ public class LoadingDialog extends Dialog {
         switch (i) {
             // 没有网络
             case NETWORK_ERROR:
-                if (TDeviceUtils.checkNet()) {
+                if (TDeviceUtils.hasInternet()) {
                     mTextview.setText(R.string.error_view_load_error_click_to_refresh);
                     mImageView.setBackgroundResource(R.mipmap.pagefailed_bg);
                 } else {

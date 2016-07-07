@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.base;
+package com.ht.fyforandroid;
 
 import android.app.Application;
 import android.content.Context;
