@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 
-import com.ht.fyforandroid.BaseApplication;
+import com.ht.fyforandroid.base.BaseApplication;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -380,8 +380,8 @@ public class TDeviceUtils {
     /**
      * 判断网络是否连接
      */
-    public static boolean checkNet(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context
+    public static boolean checkNet() {
+        ConnectivityManager cm = (ConnectivityManager) BaseApplication.getContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         return info != null;// 网络是否连接
