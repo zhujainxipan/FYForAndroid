@@ -1,5 +1,6 @@
 package com.ht.fyforandroid.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
@@ -52,6 +53,18 @@ public class ActivityManager {
         }
     }
 
+
+    /**
+     * 完全删除集合中
+     */
+    public void finishActivity() {
+        if (mActivities != null && mActivities.size() >= 0) {
+            for (Activity pActivity : mActivities) {
+                pActivity.finish();
+                pActivity = null;
+            }
+        }
+    }
 
     /**
      * 退出app

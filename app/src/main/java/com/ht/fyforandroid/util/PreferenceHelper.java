@@ -2,7 +2,7 @@ package com.ht.fyforandroid.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.ht.fyforandroid.base.BaseApplication;
+import com.ht.fyforandroid.application.BaseApplication;
 
 /**
  * Created by niehongtao on 16/5/21.
