@@ -3,6 +3,7 @@ package com.ht.fyforandroid.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.ht.fyforandroid.crash.CrashHanlder;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -22,6 +23,11 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+
+
+        // 配置自定义异常处理类
+        CrashHanlder crashHanlder = CrashHanlder.getInstance();
+        crashHanlder.init(this);
 
         // 配置imageloader
         initImageLoader();

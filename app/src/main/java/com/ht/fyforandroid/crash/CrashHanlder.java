@@ -24,7 +24,7 @@ public class CrashHanlder implements Thread.UncaughtExceptionHandler {
     private static final int TYPE_SAVE_REMOTE = 2; //崩溃日志保存远端服务器 --建议生产模式使用
 
     private int type_save = 2;  //崩溃保存日志模式 默认为2，采用保存Web服务器
-    private static final String CRASH_SAVE_SDPATH = "sdcard/fda_cache/"; //崩溃日志SD卡保存路径
+    private static final String CRASH_SAVE_SDPATH = "sdcard/fy_cache/"; //崩溃日志SD卡保存路径
     private static final String CARSH_LOG_DELIVER = "http://img2.xxh.cc:8080/SalesWebTest/CrashDeliver";
     private static CrashHanlder instance = new CrashHanlder();
     private Context mContext;
