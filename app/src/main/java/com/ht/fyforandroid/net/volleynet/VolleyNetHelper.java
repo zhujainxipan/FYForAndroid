@@ -7,6 +7,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ht.fyforandroid.application.BaseApplication;
+import com.ht.fyforandroid.net.base.BaseRequest;
+import com.ht.fyforandroid.net.base.BaseResponse;
 
 /**
  * Created by niehongtao on 16/7/15.

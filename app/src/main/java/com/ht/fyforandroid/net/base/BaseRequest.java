@@ -1,10 +1,11 @@
-package com.ht.fyforandroid.net.volleynet;
+package com.ht.fyforandroid.net.base;
 
 import java.util.Iterator;
 import java.util.Map;
 
 /**
  * Created by niehongtao on 16/7/15.
+ * 请求和响应做成公共的，不论是okhttp还是volley都可以使用，降低第三方和应用的耦合
  */
 public abstract class BaseRequest {
 
@@ -16,7 +17,7 @@ public abstract class BaseRequest {
      */
     public abstract Map<String, String> getParams();
 
-    final String getUrl() {
+    final public String getUrl() {
         return getMobileApi().concat("?").concat(parseParams(getParams()));
     }
 

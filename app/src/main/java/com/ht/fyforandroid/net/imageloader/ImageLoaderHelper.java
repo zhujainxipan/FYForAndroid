@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net;
+package com.ht.fyforandroid.net.imageloader;
 
 import android.widget.ImageView;
 

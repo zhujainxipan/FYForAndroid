@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.WebViewActivity;
-import com.ht.fyforandroid.net.ImageLoaderHelper;
+import com.ht.fyforandroid.net.imageloader.ImageLoaderHelper;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
