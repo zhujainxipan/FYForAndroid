@@ -9,17 +9,17 @@ import java.util.Stack;
  * Created by niehongtao on 16/5/18.
  * activity堆栈式管理
  */
-public class AppManager {
+public class ActivityManager {
     private static Stack<FragmentActivity> mActivities;
-    private static AppManager instance;
+    private static ActivityManager instance;
 
-    private AppManager() {
+    private ActivityManager() {
 
     }
 
-    public static AppManager getAppManager() {
+    public static ActivityManager getActivityManager() {
         if (instance == null) {
-            instance = new AppManager();
+            instance = new ActivityManager();
         }
         return instance;
     }

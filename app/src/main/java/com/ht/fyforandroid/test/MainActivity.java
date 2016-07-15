@@ -1,4 +1,4 @@
-package com.ht.fyforandroid;
+package com.ht.fyforandroid.test;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.SwipBackActivity;
 import com.ht.fyforandroid.widget.filter.DropDownButton;

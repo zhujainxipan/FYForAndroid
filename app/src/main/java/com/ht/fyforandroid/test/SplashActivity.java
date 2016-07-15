@@ -1,4 +1,4 @@
-package com.ht.fyforandroid;
+package com.ht.fyforandroid.test;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.WebViewActivity;
 import com.ht.fyforandroid.net.ImageLoaderHelper;

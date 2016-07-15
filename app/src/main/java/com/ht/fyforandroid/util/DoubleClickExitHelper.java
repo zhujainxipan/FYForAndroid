@@ -36,7 +36,7 @@ public class DoubleClickExitHelper {
                 mBackToast.cancel();
             }
             // 退出
-            AppManager.getAppManager().appExit(mActivity);
+            ActivityManager.getActivityManager().appExit(mActivity);
             return true;
         } else {
             isOnKeyBacking = true;

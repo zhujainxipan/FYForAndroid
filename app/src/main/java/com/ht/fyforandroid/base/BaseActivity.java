@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.Window;
 
 import com.ht.fyforandroid.R;
-import com.ht.fyforandroid.util.AppManager;
+import com.ht.fyforandroid.util.ActivityManager;
 import com.ht.fyforandroid.dialog.LoadingDialog;
 
 import butterknife.ButterKnife;
@@ -22,6 +23,9 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     final protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 移除系统的标题栏
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         if (getLayoutId() != 0) {
             View contentView = getLayoutInflater().inflate(getLayoutId(), null);
             setContentView(contentView);
@@ -34,7 +38,7 @@ public abstract class BaseActivity extends FragmentActivity {
         init(savedInstanceState);
         initView();
         initData();
-        AppManager.getAppManager().addActivity(this);
+        ActivityManager.getActivityManager().addActivity(this);
 
     }
 
@@ -47,7 +51,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getAppManager().removeActivity(this);
+        ActivityManager.getActivityManager().removeActivity(this);
         ButterKnife.reset(this);
     }
 
@@ -72,6 +76,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     /**
      * 子类重写改方法，设置activity的布局
+     *
      * @return
      */
     protected abstract int getLayoutId();
