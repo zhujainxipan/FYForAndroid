@@ -31,15 +31,10 @@ public abstract class BaseActivity extends FragmentActivity {
             setContentView(contentView);
         }
         mLoadingDialog = new LoadingDialog(this);
-        mLoadingDialog.showLoading(LoadingDialog.NETWORK_LOADING);
-
         // 使用注解绑定控件
         ButterKnife.inject(this);
         init(savedInstanceState);
-        initView();
-        initData();
         ActivityManager.getActivityManager().addActivity(this);
-
     }
 
 
@@ -82,8 +77,4 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract int getLayoutId();
 
     protected abstract void init(Bundle savedInstanceState);
-
-    protected abstract void initView();
-
-    protected abstract void initData();
 }

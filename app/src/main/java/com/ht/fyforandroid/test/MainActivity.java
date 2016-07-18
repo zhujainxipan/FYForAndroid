@@ -71,10 +71,7 @@ public class MainActivity extends SwipBackActivity {
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         super.mLoadingDialog.hideLoading();
-    }
 
-    @Override
-    protected void initView() {
         mBtnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,11 +95,6 @@ public class MainActivity extends SwipBackActivity {
         dropdownButtonsController.init();
 //        dropdownButtonsController.flushAll(true);
 
-
-    }
-
-    @Override
-    protected void initData() {
 
     }
 

@@ -15,6 +15,7 @@ import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.WebViewActivity;
 import com.ht.fyforandroid.net.imageloader.ImageLoaderHelper;
+import com.ht.fyforandroid.test.view.WeahterActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -41,6 +42,8 @@ public class SplashActivity extends BaseActivity {
     ImageView mIvGlideTest;
     @InjectView(R.id.btn_webview)
     Button mBtnWebview;
+    @InjectView(R.id.btn_mvp)
+    Button mBtnMvp;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -51,10 +54,8 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         mDoubleClickExit = new DoubleClickExitHelper(this);
-    }
 
-    @Override
-    protected void initView() {
+
         mTv.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -121,12 +122,15 @@ public class SplashActivity extends BaseActivity {
                         });
             }
         });
-    }
 
 
-    @Override
-    protected void initData() {
-
+        mBtnMvp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, WeahterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

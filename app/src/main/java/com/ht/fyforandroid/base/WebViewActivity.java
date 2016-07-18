@@ -53,10 +53,6 @@ public class WebViewActivity extends BaseActivity {
         mTitle = getIntent().getStringExtra("title");
     }
 
-    @Override
-    protected void initView() {
-    }
-
 
     @SuppressLint("SetJavaScriptEnabled")
     private void enableJavascript() {
@@ -118,10 +114,6 @@ public class WebViewActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void initData() {
-
-    }
 
     public static void startActivity(Context context, String url, String title, boolean isShow) {
         if (TextUtils.isEmpty(url)) throw new IllegalArgumentException("url must not be empty");

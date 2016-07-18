@@ -22,6 +22,9 @@ public abstract class BaseRequest {
     }
 
     private String parseParams(Map<String, String> params) {
+        if (params == null) {
+            return "";
+        }
         StringBuffer sb = new StringBuffer();
         Iterator<String> keys= params.keySet().iterator();
         while(keys.hasNext()) {

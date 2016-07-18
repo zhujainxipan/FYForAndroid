@@ -35,7 +35,7 @@ public class VolleyNetHelper {
 
             @Override
             public void onResponse(String arg0) {
-                baseResponse.onSuccess(arg0);
+                baseResponse.doParase(arg0);
             }
         }, new Response.ErrorListener() {
 
@@ -53,7 +53,7 @@ public class VolleyNetHelper {
 
             @Override
             public void onResponse(String arg0) {
-                baseResponse.onSuccess(arg0);
+                baseResponse.doParase(arg0);
             }
         }, new Response.ErrorListener() {
 

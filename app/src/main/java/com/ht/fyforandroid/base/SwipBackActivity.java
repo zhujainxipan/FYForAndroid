@@ -23,14 +23,4 @@ public abstract class SwipBackActivity extends BaseActivity {
                 R.layout.base_swip_layout, null);
         mSwipBack.attachToActivity(this);
     }
-
-    @Override
-    protected void initView() {
-
-    }
-
-    @Override
-    protected void initData() {
-
-    }
 }

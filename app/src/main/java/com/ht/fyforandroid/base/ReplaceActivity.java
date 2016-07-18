@@ -21,15 +21,6 @@ public abstract class ReplaceActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void initView() {
-
-    }
-
-    @Override
-    protected void initData() {
-
-    }
 
 
     public void replaceFragment(Fragment fragment) {
