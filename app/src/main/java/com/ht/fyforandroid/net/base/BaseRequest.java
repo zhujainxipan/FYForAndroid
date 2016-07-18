@@ -13,12 +13,15 @@ public abstract class BaseRequest {
 
     /**
      * 一些参数
+     *
      * @return
      */
     public abstract Map<String, String> getParams();
 
     final public String getUrl() {
-        return getMobileApi().concat("?").concat(parseParams(getParams()));
+        String mobileApi = getMobileApi();
+        String params = parseParams(getParams());
+        return mobileApi.contains("?") ? mobileApi.concat("&").concat(params) : mobileApi.concat("?").concat(params);
     }
 
     private String parseParams(Map<String, String> params) {
@@ -26,8 +29,8 @@ public abstract class BaseRequest {
             return "";
         }
         StringBuffer sb = new StringBuffer();
-        Iterator<String> keys= params.keySet().iterator();
-        while(keys.hasNext()) {
+        Iterator<String> keys = params.keySet().iterator();
+        while (keys.hasNext()) {
             String key = keys.next().toString();
             String value = params.get(key);
             if (value == null) {

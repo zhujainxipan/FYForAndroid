@@ -18,7 +18,7 @@ public class WeatherPresenter extends BasePresenter<WeatherView> {
         VolleyNetHelper.getInstance().doPost(new BaseRequest() {
             @Override
             public String getMobileApi() {
-                return "http://api.map.baidu.com/telematics/v3/weather?location=%E8%8A%B1%E9%83%BD&output=json&ak=B95329fb7fdda1e32ba3e3a245193146";
+                return "http://api.map.baidu.com/telematics/v3/weather?location=guangzhou&output=json&ak=B95329fb7fdda1e32ba3e3a245193146";
             }
 
             @Override
