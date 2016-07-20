@@ -10,15 +10,18 @@ import android.view.Window;
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.util.ActivityManager;
 import com.ht.fyforandroid.dialog.LoadingDialog;
+import com.ht.fyforandroid.util.MVPUtils;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by niehongtao on 16/5/16.
  */
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends FragmentActivity implements BaseView {
 
     public LoadingDialog mLoadingDialog;
+    public T mPresenter;
+
 
     @Override
     final protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,21 @@ public abstract class BaseActivity extends FragmentActivity {
             View contentView = getLayoutInflater().inflate(getLayoutId(), null);
             setContentView(contentView);
         }
+
         mLoadingDialog = new LoadingDialog(this);
+
         // 使用注解绑定控件
         ButterKnife.inject(this);
+
+        // MVP设计
+        mPresenter = MVPUtils.getT(this, 0);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+
+
         init(savedInstanceState);
+
         ActivityManager.getActivityManager().addActivity(this);
     }
 
@@ -47,6 +61,9 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityManager.getActivityManager().removeActivity(this);
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
         ButterKnife.reset(this);
     }
 

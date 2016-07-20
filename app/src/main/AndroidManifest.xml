@@ -57,7 +57,7 @@
 
         <activity android:name=".base.WebViewActivity"/>
 
-        <activity android:name=".test.view.WeahterActivity"/>
+        <activity android:name=".test.mvptest.view.WeahterActivity"/>
 
     </application>
 

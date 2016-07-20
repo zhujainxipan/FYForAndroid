@@ -1,20 +1,22 @@
-package com.ht.fyforandroid.test.presenter;
+package com.ht.fyforandroid.test.mvptest.presenter;
 
+import com.ht.fyforandroid.base.BasePresenter;
 import com.ht.fyforandroid.net.base.BaseRequest;
 import com.ht.fyforandroid.net.base.BaseResponse;
 import com.ht.fyforandroid.net.volleynet.VolleyNetHelper;
-import com.ht.fyforandroid.test.bean.WeatherEntity;
-import com.ht.fyforandroid.test.view.WeatherView;
+import com.ht.fyforandroid.test.mvptest.bean.WeatherEntity;
+import com.ht.fyforandroid.test.mvptest.model.WeatherMedel;
+import com.ht.fyforandroid.test.mvptest.view.WeatherView;
 
 import java.util.Map;
 
 /**
  * Created by niehongtao on 16/7/18.
  */
-public class WeatherPresenter extends BasePresenter<WeatherView> {
+public class WeatherPresenter extends BasePresenter<WeatherView, WeatherMedel> {
 
     public void fetchList() {
-        mViewRef.get().onShowLoading();
+        mView.onShowLoading();
         VolleyNetHelper.getInstance().doPost(new BaseRequest() {
             @Override
             public String getMobileApi() {
@@ -28,14 +30,14 @@ public class WeatherPresenter extends BasePresenter<WeatherView> {
         }, new BaseResponse<WeatherEntity>() {
             @Override
             public void onSuccess(WeatherEntity o) {
-                mViewRef.get().onHideLoading();
-                mViewRef.get().onFetchDataSuccess(o);
+                mView.onHideLoading();
+                mView.onFetchDataSuccess(o);
             }
 
             @Override
             public void onError(String msg) {
-                mViewRef.get().onHideLoading();
-                mViewRef.get().onFetchDataError(msg);
+                mView.onHideLoading();
+                mView.onFetchDataError(msg);
             }
 
             @Override

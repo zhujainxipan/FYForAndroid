@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.test.view;
+package com.ht.fyforandroid.test.mvptest.view;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,21 +6,19 @@ import android.widget.TextView;
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.dialog.LoadingDialog;
-import com.ht.fyforandroid.test.bean.WeatherEntity;
-import com.ht.fyforandroid.test.presenter.WeatherPresenter;
+import com.ht.fyforandroid.test.mvptest.bean.WeatherEntity;
+import com.ht.fyforandroid.test.mvptest.presenter.WeatherPresenter;
 import com.ht.fyforandroid.util.ToastUtils;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
  * Created by niehongtao on 16/7/18.
  */
-public class WeahterActivity extends BaseActivity implements WeatherView {
+public class WeahterActivity extends BaseActivity<WeatherPresenter> implements WeatherView {
 
     @InjectView(R.id.weather_tv)
     TextView mWeatherTv;
-    private WeatherPresenter mWeatherPresenter;
 
     @Override
     protected int getLayoutId() {
@@ -29,9 +27,7 @@ public class WeahterActivity extends BaseActivity implements WeatherView {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        mWeatherPresenter = new WeatherPresenter();
-        mWeatherPresenter.attachView(this);
-        mWeatherPresenter.fetchList();
+        mPresenter.fetchList();
     }
 
     @Override
@@ -54,10 +50,4 @@ public class WeahterActivity extends BaseActivity implements WeatherView {
         ToastUtils.longShow(msg);
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mWeatherPresenter.detachView();
-    }
 }

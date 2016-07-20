@@ -15,7 +15,7 @@ import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.WebViewActivity;
 import com.ht.fyforandroid.net.imageloader.ImageLoaderHelper;
-import com.ht.fyforandroid.test.view.WeahterActivity;
+import com.ht.fyforandroid.test.mvptest.view.WeahterActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -23,6 +23,10 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
 
+
+/**
+ * 未使用MVP重构
+ */
 public class SplashActivity extends BaseActivity {
     @InjectView(R.id.tv)
     TextView mTv;

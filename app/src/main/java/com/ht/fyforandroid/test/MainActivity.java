@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ht.fyforandroid.R;
-import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.SwipBackActivity;
 import com.ht.fyforandroid.widget.filter.DropDownButton;
 import com.ht.fyforandroid.widget.filter.DropdownItemObject;
@@ -22,6 +21,7 @@ import butterknife.InjectView;
 
 /**
  * Created by niehongtao on 16/6/16.
+ * 未使用MVP重构
  */
 public class MainActivity extends SwipBackActivity {
     @InjectView(R.id.btn_close)

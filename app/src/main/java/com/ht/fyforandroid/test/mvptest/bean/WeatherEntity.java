@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.test.bean;
+package com.ht.fyforandroid.test.mvptest.bean;
 
 import java.util.List;
 
