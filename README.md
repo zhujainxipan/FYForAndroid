@@ -11,13 +11,14 @@
 4. 常见工具类
 5. 缓存管理
 6. 部分第三方控件
+7. 修改架构方式为MVP，并且在基类中引入对MVP的支持。此外，就此写了一个demo。
 
 未完成清单：
 
 1. 网络框架：尝试对volley、okhttp等进行封装
 2. 数据库框架
 3. 上传下载框架、服务
-4. 最新android开发模式：MVP\MVVM等
+4. 最新android开发模式：MVVM等
 5. RXjava等
 6. 等等
 7. 支持Material Design风格，提升编译版本
