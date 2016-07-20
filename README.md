@@ -21,9 +21,7 @@
 5. RXjava等
 6. 等等
 7. 支持Material Design风格，提升编译版本
+8. 封装recycleview
 
 
 需要多看一些开源项目和开源代码，重复造轮子来提升自己的能力。
-
-
-todo：
