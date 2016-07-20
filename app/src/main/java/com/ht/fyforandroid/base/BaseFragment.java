@@ -6,13 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ht.fyforandroid.util.MVPUtils;
+
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
 /**
  * Created by niehongtao on 16/5/16.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView {
+    public T mPresenter;
 
 
     @Nullable
@@ -27,8 +31,15 @@ public abstract class BaseFragment extends Fragment {
     final public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.inject(this, view);
-        initView(view);
-        initData();
+
+        // MVP设计
+        mPresenter = MVPUtils.getT(this, 0);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+
+        init();
+
         if (isOpenEventBus()) {
             openEventBus();
         }
@@ -37,6 +48,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
@@ -48,13 +62,12 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 设置fragment的布局
+     *
      * @return
      */
     protected abstract int getLayoutId();
 
-    protected abstract void initView(View view);
-
-    protected abstract void initData();
+    protected abstract void init();
 
     protected abstract boolean isOpenEventBus();
 
