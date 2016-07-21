@@ -39,20 +39,76 @@ public class ImageLoaderHelper {
     protected ImageLoaderHelper() {
     }
 
-    public void loadImage(ImageView imageView, String url, DisplayImageOptions displayImageOptions, SimpleImageLoadingListener animate) {
+    /**
+     * 从网络加载图片
+     *
+     * @param imageView
+     * @param url
+     * @param displayImageOptions
+     * @param animate
+     */
+    public void loadImageFromNet(ImageView imageView, String url, DisplayImageOptions displayImageOptions, SimpleImageLoadingListener animate) {
         imageLoader.displayImage(url, imageView, displayImageOptions, animate);
     }
 
-    public void loadImageFromUrl(ImageView imageView, String url) {
+
+    /**
+     * 从网络加载图片
+     *
+     * @param imageView
+     * @param url
+     */
+    public void loadImageFromNet(ImageView imageView, String url) {
         imageLoader.displayImage(url, imageView, optionsRounded);
     }
 
-    public void loadImageFromUrl(ImageView imageView, String url, DisplayImageOptions displayImageOptions) {
+    /**
+     * 从网络加载图片
+     *
+     * @param imageView
+     * @param url
+     * @param displayImageOptions
+     */
+    public void loadImageFromNet(ImageView imageView, String url, DisplayImageOptions displayImageOptions) {
         imageLoader.displayImage(url, imageView, displayImageOptions);
     }
 
-    public void loadImageWithListener(ImageView imageView, String url, ImageLoadingListener listener) {
+
+    /**
+     * 从网络加载图片
+     *
+     * @param imageView
+     * @param url
+     * @param listener
+     */
+    public void loadImageFromNet(ImageView imageView, String url, ImageLoadingListener listener) {
         imageLoader.displayImage(url, imageView, optionsRounded, listener);
     }
+
+
+    /**
+     * 从内存卡中异步加载本地图片
+     *
+     * @param uri
+     * @param imageView
+     */
+    public void loadImageFromFile(String uri, ImageView imageView) {
+        // String imageUri = "file:///mnt/sdcard/image.png"; // from SD card
+        imageLoader.displayImage("file://" + uri, imageView);
+    }
+
+
+    /**
+     * 从assets文件夹中异步加载图片
+     *
+     * @param imageName 图片名称，带后缀的，例如：1.png
+     * @param imageView
+     */
+    public void loadImageFromAssets(String imageName, ImageView imageView) {
+        // String imageUri = "assets://image.png"; // from assets
+        imageLoader.displayImage("assets://" + imageName,
+                imageView);
+    }
+
 
 }
