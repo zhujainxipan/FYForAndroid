@@ -4,7 +4,7 @@ import com.ht.fyforandroid.base.BaseModel;
 import com.ht.fyforandroid.base.BasePresenter;
 import com.ht.fyforandroid.net.base.BaseRequest;
 import com.ht.fyforandroid.net.base.BaseResponse;
-import com.ht.fyforandroid.net.volleynet.VolleyNetHelper;
+import com.ht.fyforandroid.net.json.VolleyNetHelper;
 import com.ht.fyforandroid.test.mvptest.bean.WeatherEntity;
 import com.ht.fyforandroid.test.mvptest.view.WeatherView;
 

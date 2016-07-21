@@ -1,4 +1,4 @@
-package com.ht.fyforandroid.net.imageloader;
+package com.ht.fyforandroid.net.img;
 
 import android.widget.ImageView;
 
@@ -10,10 +10,11 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 /**
- * Created by niehongtao on 16/6/29.
+ * Created by niehongtao on 16/7/21.
  */
-public class ImageLoaderHelper {
-    private static ImageLoaderHelper instance = new ImageLoaderHelper();
+public class UILoaderProduct implements ImageLoaderProduct {
+
+    private static UILoaderProduct instance = new UILoaderProduct();
 
     //两像素圆角
     private DisplayImageOptions optionsRounded = new DisplayImageOptions.Builder()
@@ -29,14 +30,14 @@ public class ImageLoaderHelper {
     private ImageLoader imageLoader = ImageLoader.getInstance();
 
 
-    public static ImageLoaderHelper getInstance() {
+    public static UILoaderProduct getInstance() {
         if (instance == null) {
-            instance = new ImageLoaderHelper();
+            instance = new UILoaderProduct();
         }
         return instance;
     }
 
-    protected ImageLoaderHelper() {
+    private UILoaderProduct() {
     }
 
     /**
@@ -111,4 +112,8 @@ public class ImageLoaderHelper {
     }
 
 
+    @Override
+    public void loadImageFromFile(ImageView imageView, String uri) {
+
+    }
 }
