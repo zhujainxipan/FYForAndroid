@@ -1,24 +1,19 @@
 package com.ht.fyforandroid.test;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
 import com.ht.fyforandroid.base.WebViewActivity;
+import com.ht.fyforandroid.net.img.ImageLoaderFactory;
 import com.ht.fyforandroid.test.mvptest.view.WeahterActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
 
@@ -76,16 +71,14 @@ public class SplashActivity extends BaseActivity {
         mBtnGlide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(SplashActivity.this)
-                        .load("http://www.baidu.com/img/bdlogo.png")
-                        .into(mIvGlideTest);
+                ImageLoaderFactory.createImageLoader(ImageLoaderFactory.TPYE_GLIDE).loadImageFromNet(mIvGlideTest, "http://www.baidu.com/img/bdlogo.png");
             }
         });
 
         mBtnPicasso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Picasso.with(SplashActivity.this).load("http://www.baidu.com/img/bdlogo.png").into(mIvPicassoTest);
+                ImageLoaderFactory.createImageLoader(ImageLoaderFactory.TPYE_PICASSO).loadImageFromNet(mIvPicassoTest, "http://www.baidu.com/img/bdlogo.png");
             }
         });
         mBtnEnter.setOnClickListener(new View.OnClickListener() {
@@ -100,29 +93,10 @@ public class SplashActivity extends BaseActivity {
         mBtnImageLoader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageLoaderHelper.getInstance().loadImageWithListener(mIvTest,
-                        "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png",
-                        new ImageLoadingListener() {
-                            @Override
-                            public void onLoadingStarted(String s, View view) {
-
-                            }
-
-                            @Override
-                            public void onLoadingFailed(String s, View view, FailReason failReason) {
-
-                            }
-
-                            @Override
-                            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                                Log.d("wwww", "加载成功");
-                            }
-
-                            @Override
-                            public void onLoadingCancelled(String s, View view) {
-
-                            }
-                        });
+                ImageLoaderFactory.createImageLoader(ImageLoaderFactory.TPYE_UNIVERSAL_IMAGE_LOADER).
+                        loadImageFromNet(
+                                mIvTest,
+                                "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png");
             }
         });
 

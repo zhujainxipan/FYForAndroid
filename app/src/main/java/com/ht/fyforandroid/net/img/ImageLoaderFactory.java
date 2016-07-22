@@ -9,7 +9,7 @@ public class ImageLoaderFactory {
     public static final int TPYE_PICASSO = 3;
 
 
-    public ImageLoaderProduct createImageLoader(int type) {
+    public static ImageLoaderProduct createImageLoader(int type) {
         ImageLoaderProduct product = null;
         switch (type) {
             case TPYE_GLIDE:
