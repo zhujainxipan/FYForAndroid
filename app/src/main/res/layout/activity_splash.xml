@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="splash页面"
+            android:text="splash页面splash页面splash页面splash页面"
             android:textColor="#000"
             />
 
