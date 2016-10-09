@@ -65,23 +65,31 @@
 
         <activity android:name=".test.webview.TestWebViewActivity"/>
 
+        <!--<activity android:name=".test.scheme.Test1Activity">-->
+            <!--&lt;!&ndash;要想在别的App上能成功调起App，必须添加intent过滤器&ndash;&gt;-->
+            <!--<intent-filter>-->
+                <!--&lt;!&ndash;协议部分，随便设置&ndash;&gt;-->
+                <!--<data-->
+                    <!--android:scheme="myscheme://"-->
+                    <!--/>-->
+                <!--&lt;!&ndash;下面这几行也必须得设置&ndash;&gt;-->
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+                <!--<action android:name="android.intent.action.VIEW"/>-->
+                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+
         <activity android:name=".test.scheme.Test1Activity">
-            <!--要想在别的App上能成功调起App，必须添加intent过滤器-->
             <intent-filter>
-                <!--协议部分，随便设置-->
-                <data
-                    android:host="goods"
-                    android:path="/goodsDetail"
-                    android:port="8888"
-                    android:scheme="xl"
-                    />
-                <!--下面这几行也必须得设置-->
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="myscheme://" />
             </intent-filter>
         </activity>
-
 
     </application>
 

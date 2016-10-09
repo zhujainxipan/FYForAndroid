@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity {
         mBtnWebview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TestWebViewActivity.startActivity(SplashActivity.this, "file:///android_asset/test.html", "百度一下");
+                TestWebViewActivity.startActivity(SplashActivity.this, "file:///android_asset/test.html");
             }
         });
 
