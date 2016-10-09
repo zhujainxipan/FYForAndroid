@@ -1,16 +1,18 @@
 package com.ht.fyforandroid.test.webview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.test.js.MyObject;
 
 import butterknife.InjectView;
 
@@ -21,7 +23,6 @@ import butterknife.InjectView;
 public class TestWebViewActivity extends BaseActivity {
     @InjectView(R.id.webview)
     WebView mWebview;
-    private String mUrl;
 
 
     @Override
@@ -32,14 +33,13 @@ public class TestWebViewActivity extends BaseActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         TestWebViewActivity.super.mLoadingDialog.hideLoading();
-        handleIntent();
-        mWebview.loadUrl(this.mUrl);
+        mWebview.loadUrl("file:///android_asset/test.html");
         mWebview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
-                if (uri.getScheme().equals("myscheme")) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                if (uri.getScheme().equals("xl")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 } else {
                     view.loadUrl(url);
                 }
@@ -47,17 +47,17 @@ public class TestWebViewActivity extends BaseActivity {
             }
         });
 
+        WebSettings webSettings = mWebview.getSettings();
+        //①设置WebView允许调用js
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDefaultTextEncodingName("UTF-8");
+        //②将object对象暴露给Js,调用addjavascriptInterface
+        mWebview.addJavascriptInterface(new MyObject(TestWebViewActivity.this), "myObj");
     }
 
-    private void handleIntent() {
-        mUrl = getIntent().getStringExtra("url");
-    }
 
-
-    public static void startActivity(Context context, String url) {
-        if (TextUtils.isEmpty(url)) throw new IllegalArgumentException("url must not be empty");
+    public static void startActivity(Context context) {
         Intent intent = new Intent(context, TestWebViewActivity.class);
-        intent.putExtra("url", url);
         context.startActivity(intent);
     }
 
@@ -70,11 +70,4 @@ public class TestWebViewActivity extends BaseActivity {
         }
     }
 
-    public boolean onKeyDown(int keyCoder, KeyEvent event) {
-        if (mWebview.canGoBack() && keyCoder == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            mWebview.goBack();   //goBack()表示返回webView的上一页面
-            return true;
-        }
-        return false;
-    }
 }

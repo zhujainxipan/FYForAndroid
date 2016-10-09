@@ -1,6 +1,7 @@
 package com.ht.fyforandroid.test;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.test.scheme.Test1Activity;
 import com.ht.fyforandroid.test.webview.TestWebViewActivity;
 import com.ht.fyforandroid.net.img.ImageLoaderFactory;
 import com.ht.fyforandroid.test.mvptest.view.WeahterActivity;
@@ -64,7 +66,9 @@ public class SplashActivity extends BaseActivity {
         mBtnWebview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TestWebViewActivity.startActivity(SplashActivity.this, "file:///android_asset/test.html");
+                TestWebViewActivity.startActivity(SplashActivity.this);
+//                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("xl://goods:8888/goodsDetail?goodsId=10011002"));
+//                startActivity(intent);
             }
         });
 
