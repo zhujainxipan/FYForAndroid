@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
-import com.ht.fyforandroid.base.WebViewActivity;
+import com.ht.fyforandroid.test.webview.TestWebViewActivity;
 import com.ht.fyforandroid.net.img.ImageLoaderFactory;
 import com.ht.fyforandroid.test.mvptest.view.WeahterActivity;
 import com.ht.fyforandroid.util.DoubleClickExitHelper;
@@ -64,7 +64,7 @@ public class SplashActivity extends BaseActivity {
         mBtnWebview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WebViewActivity.startActivity(SplashActivity.this, "http://www.baidu.com/", "百度一下");
+                TestWebViewActivity.startActivity(SplashActivity.this, "file:///android_asset/test.html", "百度一下");
             }
         });
 
