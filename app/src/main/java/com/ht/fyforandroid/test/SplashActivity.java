@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ht.fyforandroid.R;
 import com.ht.fyforandroid.base.BaseActivity;
+import com.ht.fyforandroid.test.retrofit.RerofitTestActivity;
 import com.ht.fyforandroid.test.scheme.Test1Activity;
 import com.ht.fyforandroid.test.webview.TestWebViewActivity;
 import com.ht.fyforandroid.net.img.ImageLoaderFactory;
@@ -44,6 +45,8 @@ public class SplashActivity extends BaseActivity {
     Button mBtnWebview;
     @InjectView(R.id.btn_mvp)
     Button mBtnMvp;
+    @InjectView(R.id.btn_retrofit)
+    Button mBtnRetrofit;
     private DoubleClickExitHelper mDoubleClickExit;
 
     @Override
@@ -53,8 +56,15 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        mDoubleClickExit = new DoubleClickExitHelper(this);
+        int RedCount;
+        try {
+            RedCount = Integer.valueOf("");
+        } catch (NumberFormatException e) {
+            RedCount = 0;
+        }
 
+
+        mDoubleClickExit = new DoubleClickExitHelper(this);
 
         mTv.postDelayed(new Runnable() {
             @Override
@@ -109,6 +119,14 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SplashActivity.this, WeahterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnRetrofit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this, RerofitTestActivity.class);
                 startActivity(intent);
             }
         });

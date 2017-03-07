@@ -64,6 +64,8 @@
         <activity android:name=".test.mvptest.view.WeahterActivity"/>
 
         <activity android:name=".test.webview.TestWebViewActivity"/>
+        <activity android:name=".test.retrofit.RerofitTestActivity"/>
+
 
         <!--<activity android:name=".test.scheme.Test1Activity">-->
         <!--&lt;!&ndash;要想在别的App上能成功调起App，必须添加intent过滤器&ndash;&gt;-->
